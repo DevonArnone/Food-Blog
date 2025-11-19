@@ -68,19 +68,19 @@ Libraries / Tools
 
 Thomas Spiese
 
-Created this website to help single men learn to cook and take control of their health, wallet, and lifestyle.
+•	Created this website to help single men learn to cook and take control of their health, wallet, and lifestyle.
 
 Devon Arnone
 
-Built to make cooking approachable and enjoyable for beginners and experienced home cooks alike.
+•	Built to make cooking approachable and enjoyable for beginners and experienced home cooks alike.
 
 Miguel Magaña
 
-Wants to help guys decide what to cook and make meal planning easier.
+•	Wants to help guys decide what to cook and make meal planning easier.
 
 Joshua Garay
 
-Created this site after wanting a simple, fun resource for learning cooking techniques and recipes.
+•	Created this site after wanting a simple, fun resource for learning cooking techniques and recipes.
 
 
 
