@@ -1,4 +1,4 @@
-#🍴 Forks & Freedom
+# 🍴 Forks & Freedom
 
 A beginner-friendly cooking website made for guys who want to learn their way around the kitchen.
 
