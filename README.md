@@ -69,62 +69,6 @@ Libraries / Tools
 
 ⸻
 
-📁 Folder Structure
-
-root/
-│── index.html
-│── recipes.html
-│── about.html
-│── contact.html
-│── applecrisp.html
-│── burger.html
-│── TS1.html
-│── JG1.html
-│
-├── styles/
-│   ├── header.css
-│   ├── indexstyles.css
-│   ├── recipesstyles.css
-│   ├── aboutstyle.css
-│   ├── burgerstyles.css
-│   ├── applecrispstyles.css
-│   ├── steakcheese.css
-│   └── TS1.css
-│
-├── javascript/
-│   ├── responsive-nav.js
-│   ├── fixed-responsive-nav.js
-│   ├── fastclick.js
-│   └── scroll.js
-│
-├── Photos/
-│   ├── Logo.webp
-│   ├── burger.jpg
-│   ├── Apple-Crisp-197.jpg
-│   ├── Steak_Hasselback.png
-│   ├── cheestesteak.jpg
-│   ├── Devon.JPG
-│   ├── ...
-│
-└── icons/
-    ├── responsivenav.eot
-    ├── responsivenav.ttf
-    ├── responsivenav.woff
-    └── responsivenav.svg
-
-
-⸻
-
-🖼️ Screenshots (Optional)
-
-Drop images here if you want them displayed on GitHub.
-
-![Homepage Screenshot](Photos/homepage.png)
-![Recipes Screenshot](Photos/recipes.png)
-
-
-⸻
-
 👥 Authors
 
 Thomas Spiese
