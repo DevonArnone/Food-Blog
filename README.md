@@ -2,7 +2,6 @@
 
 A beginner-friendly cooking website made for guys who want to learn their way around the kitchen.
 
-⸻
 
 ## 📌 Overview
 
@@ -13,7 +12,6 @@ Help single guys cook better, eat better, and live better with simple, affordabl
 
 This project includes recipe pages, author bios, a contact form, and mobile-responsive navigation using JavaScript and CSS.
 
-⸻
 
 ## 🗂️ Table of Contents
 	•	Features￼
@@ -23,7 +21,6 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 	•	Contact
 	
 
-⸻
 
 ## ✨ Features
 
@@ -36,7 +33,7 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 ✔️ Smooth scrolling and mobile fast-click support
 ✔️ Organized folders for maintainability
 
-⸻
+
 
 ## 📄 Pages
 
@@ -51,7 +48,6 @@ JG1.html	Philly cheesesteak recipe
 TS1.html	Steak & Hasselback Potatoes recipe
 
 
-⸻
 
 ## 🛠️ Technologies Used
 
@@ -66,7 +62,7 @@ Libraries / Tools
 	•	FastClick.js
 	•	SmoothScroll.js
 
-⸻
+
 
 ## 👥 Authors
 
@@ -86,7 +82,7 @@ Joshua Garay
 
 Created this site after wanting a simple, fun resource for learning cooking techniques and recipes.
 
-⸻
+
 
 ## 📬 Contact
 
