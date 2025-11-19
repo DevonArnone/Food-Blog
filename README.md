@@ -18,11 +18,10 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 ## 🗂️ Table of Contents
 	•	Features￼
 	•	Pages￼
-	•	Technologies Used￼
-	•	Folder Structure￼
-	•	Screenshots￼
-	•	Credits￼
-	•	License￼
+	•	Technologies Used
+	•	Authors
+	•	Contact
+	
 
 ⸻
 
