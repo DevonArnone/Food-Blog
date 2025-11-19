@@ -4,7 +4,7 @@ A beginner-friendly cooking website made for guys who want to learn their way ar
 
 ⸻
 
-📌 Overview
+## 📌 Overview
 
 Forks & Freedom is a responsive, multi-page cooking website created for COMP126.
 Its mission is simple:
@@ -15,7 +15,7 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 
 ⸻
 
-🗂️ Table of Contents
+## 🗂️ Table of Contents
 	•	Features￼
 	•	Pages￼
 	•	Technologies Used￼
@@ -26,7 +26,7 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 
 ⸻
 
-✨ Features
+## ✨ Features
 
 ✔️ Fully responsive navigation menu
 ✔️ Custom CSS styling
@@ -39,7 +39,7 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 
 ⸻
 
-📄 Pages
+## 📄 Pages
 
 Page	Description
 index.html	Homepage with mission statement & newsletter form
@@ -54,7 +54,7 @@ TS1.html	Steak & Hasselback Potatoes recipe
 
 ⸻
 
-🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 Frontend
 	•	HTML5
@@ -69,7 +69,7 @@ Libraries / Tools
 
 ⸻
 
-👥 Authors
+## 👥 Authors
 
 Thomas Spiese
 
@@ -89,6 +89,6 @@ Created this site after wanting a simple, fun resource for learning cooking tech
 
 ⸻
 
-📬 Contact
+## 📬 Contact
 
 📧 forksfreedom@gmail.com
