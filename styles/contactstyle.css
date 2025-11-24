@@ -1,3 +1,29 @@
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 #name, #email, #subject {
     width: 100%; 
     height: 40px; 
