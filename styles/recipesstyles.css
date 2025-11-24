@@ -4,24 +4,22 @@
     box-sizing: border-box;
 }
 
-html {
+* { 
     margin: 0;
     padding: 0;
-    border: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    width: 100%;
-    max-width: 100%;
+    box-sizing: border-box;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+html, body{
     margin: 0;
     padding: 0;
-    border: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .main_section {
