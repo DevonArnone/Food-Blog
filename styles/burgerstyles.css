@@ -56,19 +56,27 @@ li{
     main{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
-.recipe-picture{
-    width: 60%;
-}
+    .recipe-picture{
+        width: 60%;
+        flex: 0 0 60%;
+    }
 
     .recipe-text{
         width: 40%;
-        
+        flex: 0 0 40%;
     }
     
     .recipe-text p{
         margin-top: 10px;
         margin-bottom: -20px;
+    }
+
+    #comments-container {
+        width: 100%;
+        flex: 0 0 100%;
+        order: 3;
     }
     }

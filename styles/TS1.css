@@ -1,7 +1,7 @@
 html, body{
     margin: 0;
     padding: 0;
-    border: 0
+    border: 0;
 }
 
 footer {
@@ -15,20 +15,16 @@ main{
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    grid-template-columns: 50f 50f;
-    grid-template-rows: 50f 50f;
 }
 
 .recipe-picture{
-    display: grid;
-    grid-column: span(1);
-    grid-row: inherit;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     margin: 20px;
     padding: 25px;
-    box-shadow: 0 0px 6px  black;
+    box-shadow: 0 0px 6px black;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -39,9 +35,7 @@ img{
 }
 
 .recipe-text{
-    display: grid;
-    grid-column: span(1);
-    grid-row: inherit;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -53,7 +47,7 @@ img{
 }
 
 li{
-    text-align:left ;
+    text-align: left;
 }
 
 
@@ -61,19 +55,27 @@ li{
     main{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
-.recipe-picture{
-    width: 60%
-}
+    .recipe-picture{
+        width: 60%;
+        flex: 0 0 60%;
+    }
 
     .recipe-text{
         width: 40%;
-        
+        flex: 0 0 40%;
     }
     
     .recipe-text p{
         margin-top: 10px;
         margin-bottom: -20px;
+    }
+
+    #comments-container {
+        width: 100%;
+        flex: 0 0 100%;
+        order: 3;
     }
     }

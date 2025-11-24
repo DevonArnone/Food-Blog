@@ -23,8 +23,8 @@
 }
 
 .form-box{
-    display:grid;
-    padding: 20px 30px 30px 20px
+    display: block;
+    padding: 20px 30px 30px 20px;
 }
 
 .form input:focus {
@@ -37,7 +37,7 @@
 .color-transition {
     background-image: linear-gradient(90deg, rgb(136,156,168) 0%, rgb(29,43,56) 30%);
     border: none;
-    width: 100.6%;
+    width: 100%;
     padding: 10px;
     height: 40px;
     background-size: 200% 100%;
@@ -46,7 +46,8 @@
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: bold;
-    color: white
+    color: white;
+    box-sizing: border-box;
 }
 
 .color-transition:hover {
@@ -54,17 +55,15 @@
 }
 
 .formtitle{
-    text-align: center
+    text-align: center;
 }
 
 .form-box h2{
-    text-align: center
+    text-align: center;
 }
 
 .welcome{
-    display: grid;
-    grid-column: span(1);
-    grid-row: inherit;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -73,12 +72,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
     text-align: center;
+    background-color: rgb(29, 43, 56);
+    color: rgb(239, 243, 245);
+    border-radius: 8px;
 }
 
 .welcome-image{
-    display: grid;
-    grid-column: span(1);
-    grid-row: inherit;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
@@ -87,6 +87,8 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
     text-align: center;
+    background-color: rgb(136, 156, 168);
+    border-radius: 8px;
 }
 
 img{
@@ -116,8 +118,6 @@ main{
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
 }
 
 
@@ -126,30 +126,48 @@ main{
     main{
         display: flex;
         flex-direction: row;
-    }
-    .form{
-        width: 60%;
+        align-items: flex-start;
+        gap: 20px;
     }
 
     .welcome{
-        width: 40%;
-        margin: auto;
-        margin-top: 20px; 
-        margin-bottom: 10px; 
-        margin-left: 20px;
-        padding: 60px;
+        flex: 1;
+        max-width: 50%;
+        margin: 20px;
+        padding: 40px;
+    }
+
+    .welcome-image{
+        flex: 1;
+        max-width: 50%;
+        margin: 20px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome-image img{
+        max-width: 100%;
+        height: auto;
     }
     
     .welcome p{
         margin-top: 10px;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
+    }
+
+    .form-box{
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
     }
 
     .formtitle{
-        text-align: center
+        text-align: center;
     }
 
     .form-box h2{
         text-align: center;
     }
-    }
+}

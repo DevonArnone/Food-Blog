@@ -274,8 +274,29 @@ class CommentManager {
 }
 
 // Initialize comment manager when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const recipeId = window.location.pathname.split('/').pop().replace('.html', '') || 'default';
-    window.commentManager = new CommentManager(recipeId);
-});
+function initializeComments() {
+    // Get recipe ID from current page
+    let recipeId = window.location.pathname.split('/').pop().replace('.html', '');
+    
+    // Handle cases where pathname might be empty or just '/'
+    if (!recipeId || recipeId === '/' || recipeId === '') {
+        recipeId = window.location.href.split('/').pop().replace('.html', '') || 'default';
+    }
+    
+    // Ensure comments container exists
+    const container = document.getElementById('comments-container');
+    if (container) {
+        window.commentManager = new CommentManager(recipeId);
+    } else {
+        console.warn('Comments container not found on this page');
+    }
+}
+
+// Wait for DOM to be ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeComments);
+} else {
+    // DOM is already ready
+    initializeComments();
+}
 
