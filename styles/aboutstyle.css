@@ -17,8 +17,7 @@ body {
     overflow-y: auto !important;
     width: 100%;
     max-width: 100%;
-    height: auto;
-    min-height: 100vh;
+    height: auto !important;
 }
 
 * {
