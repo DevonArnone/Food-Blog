@@ -333,17 +333,29 @@ class AuthManager {
                 <button id="username-login-btn" class="username-login-btn">Sign In</button>
             `;
             
-            // Setup button listeners
-            const googleBtn = document.getElementById('google-sso-btn');
-            const usernameBtn = document.getElementById('username-login-btn');
-            
-            if (googleBtn) {
-                googleBtn.addEventListener('click', () => this.handleGoogleSSOClick());
-            }
-            
-            if (usernameBtn) {
-                usernameBtn.addEventListener('click', () => this.showLoginModal());
-            }
+            // Setup button listeners immediately
+            setTimeout(() => {
+                const googleBtn = document.getElementById('google-sso-btn');
+                const usernameBtn = document.getElementById('username-login-btn');
+                
+                if (googleBtn) {
+                    googleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.handleGoogleSSOClick();
+                    });
+                } else {
+                    console.warn('Google SSO button not found');
+                }
+                
+                if (usernameBtn) {
+                    usernameBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.showLoginModal();
+                    });
+                } else {
+                    console.warn('Username login button not found');
+                }
+            }, 50);
         }
     }
 }

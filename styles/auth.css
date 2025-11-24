@@ -1,10 +1,12 @@
 /* Authentication Styles */
 #auth-container {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: flex-end;
     padding: 10px 15px;
     margin-left: auto;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .user-info {
