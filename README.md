@@ -34,21 +34,6 @@ This project includes recipe pages, author bios, a contact form, and mobile-resp
 ✔️ Organized folders for maintainability
 
 
-
-## 📄 Pages
-
-Page	Description
-index.html	Homepage with mission statement & newsletter form
-recipes.html	Grid of all available recipes
-about.html	Meet the authors with photos
-contact.html	Contact info + form
-applecrisp.html	Detailed Apple Crisp recipe
-burger.html	American cheeseburger recipe
-JG1.html	Philly cheesesteak recipe
-TS1.html	Steak & Hasselback Potatoes recipe
-
-
-
 ## 🛠️ Technologies Used
 
 Frontend
