@@ -7,12 +7,35 @@ class AuthManager {
     }
 
     init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.initializeAuth();
+            });
+        } else {
+            this.initializeAuth();
+        }
+    }
+
+    initializeAuth() {
         // Check for stored user session
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
-            this.user = JSON.parse(storedUser);
-            this.updateUI();
+            try {
+                this.user = JSON.parse(storedUser);
+            } catch (e) {
+                console.error('Error parsing user data:', e);
+                localStorage.removeItem('user');
+            }
         }
+
+        // Update UI - try immediately, then retry if needed
+        this.updateUI();
+        
+        // Also try after a short delay to ensure DOM is fully ready
+        setTimeout(() => {
+            this.updateUI();
+        }, 200);
 
         // Load Google Identity Services (but SSO is currently down)
         // this.loadGoogleSignIn();
@@ -280,7 +303,14 @@ class AuthManager {
 
     updateUI() {
         const authContainer = document.getElementById('auth-container');
-        if (!authContainer) return;
+        if (!authContainer) {
+            // Retry after a short delay if container doesn't exist yet
+            setTimeout(() => this.updateUI(), 100);
+            return;
+        }
+
+        // Clear any existing content
+        authContainer.innerHTML = '';
 
         if (this.user) {
             // User is logged in
@@ -320,14 +350,16 @@ class AuthManager {
 
 // Initialize auth manager when DOM is ready
 let authManager;
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        authManager = new AuthManager();
-    });
-} else {
+
+function initializeAuthManager() {
     authManager = new AuthManager();
+    window.authManager = authManager;
 }
 
-// Export for use in other scripts
-window.authManager = authManager;
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAuthManager);
+} else {
+    // DOM is already ready
+    initializeAuthManager();
+}
 

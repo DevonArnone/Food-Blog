@@ -154,13 +154,29 @@ class CommentManager {
         if (loginLink) {
             loginLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Open the login modal from auth manager
-                if (window.authManager && typeof window.authManager.showLoginModal === 'function') {
-                    window.authManager.showLoginModal();
-                } else {
-                    // Fallback: scroll to auth container
-                    document.getElementById('auth-container')?.scrollIntoView({ behavior: 'smooth' });
-                }
+                // Wait for authManager to be ready, then open modal
+                const tryOpenModal = () => {
+                    if (window.authManager && typeof window.authManager.showLoginModal === 'function') {
+                        window.authManager.showLoginModal();
+                    } else {
+                        // Wait a bit and try again, or use fallback
+                        setTimeout(() => {
+                            if (window.authManager && typeof window.authManager.showLoginModal === 'function') {
+                                window.authManager.showLoginModal();
+                            } else {
+                                // Fallback: scroll to auth container and click sign in button
+                                document.getElementById('auth-container')?.scrollIntoView({ behavior: 'smooth' });
+                                setTimeout(() => {
+                                    const signInBtn = document.getElementById('username-login-btn');
+                                    if (signInBtn) {
+                                        signInBtn.click();
+                                    }
+                                }, 500);
+                            }
+                        }, 200);
+                    }
+                };
+                tryOpenModal();
             });
         }
     }
