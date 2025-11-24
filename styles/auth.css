@@ -1,0 +1,92 @@
+/* Authentication Styles */
+#auth-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    margin-left: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.user-name {
+    color: white;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.signout-btn {
+    background-color: rgb(29, 43, 56);
+    color: white;
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Hepta Slab", serif;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.signout-btn:hover {
+    background-color: white;
+    color: rgb(29, 43, 56);
+}
+
+#google-signin-button {
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 699px) {
+    #auth-container {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        margin-top: 10px;
+        order: 3;
+    }
+
+    .head-right {
+        width: 100%;
+    }
+
+    .user-info {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .user-name {
+        font-size: 12px;
+    }
+
+    .signout-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    #google-signin-button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+

@@ -1,9 +1,11 @@
 .logo{
     width: 100px;
     height: 100px;
-    background-image:url("Photos/Logo.webp");
     background-image:url("../Photos/Logo.webp");
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
 }
 
 .navbar {
@@ -13,6 +15,8 @@
     background-color: rgb(136,156,168);
     padding-right:15px;
     border-bottom: solid rgb(29,43,56);
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .js .nav-collapse {
@@ -92,6 +96,15 @@ a:hover{
     display: flex;
     flex-direction: column;
     font-family: "Goblin One", 'Times New Roman';
+    flex: 1;
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 h1{
@@ -144,6 +157,17 @@ main{
         flex-direction: row;
     }
 
+    .navbar {
+        flex-wrap: nowrap;
+    }
+
+    .head-right {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
     .nav-collapse ul {
         flex-direction: row;
         justify-content: center;
@@ -164,4 +188,27 @@ main{
     .nav-toggle {
         display: none;
     }
+
+    #auth-container {
+        margin-left: auto;
+        margin-right: 0;
+        order: 2;
     }
+}
+
+/* Mobile-specific header adjustments */
+@media screen and (max-width: 699px) {
+    .head-right {
+        width: 100%;
+    }
+
+    .nav-collapse {
+        width: 100%;
+    }
+
+    #auth-container {
+        width: 100%;
+        margin: 10px 0 0 0;
+        padding: 0 10px;
+    }
+}

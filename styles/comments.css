@@ -1,0 +1,284 @@
+/* Comments Section Styles */
+.comments-section {
+    margin: 40px 20px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 0px 6px black;
+    border-radius: 8px;
+}
+
+.comments-title {
+    font-family: "Goblin One", serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: rgb(29, 43, 56);
+    text-align: center;
+}
+
+.comment-form {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(136, 156, 168);
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgb(136, 156, 168);
+    border-radius: 5px;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 80px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: rgb(29, 43, 56);
+    box-shadow: 0 0 5px rgba(29, 43, 56, 0.3);
+}
+
+.submit-comment-btn {
+    background-color: rgb(136, 156, 168);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.submit-comment-btn:hover {
+    background-color: rgb(29, 43, 56);
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(239, 243, 245);
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.login-prompt p {
+    margin: 0;
+    font-family: "Hepta Slab", serif;
+    font-size: 16px;
+}
+
+.login-prompt a {
+    color: rgb(29, 43, 56);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.no-comments {
+    text-align: center;
+    color: rgb(136, 156, 168);
+    font-family: "Hepta Slab", serif;
+    font-style: italic;
+    padding: 20px;
+}
+
+.comment {
+    padding: 15px;
+    background-color: rgb(239, 243, 245);
+    border-radius: 8px;
+    border-left: 3px solid rgb(136, 156, 168);
+}
+
+.comment-reply {
+    margin-left: 30px;
+    margin-top: 10px;
+    background-color: white;
+    border-left-color: rgb(29, 43, 56);
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgb(136, 156, 168);
+}
+
+.comment-author {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.comment-author strong {
+    font-family: "Hepta Slab", serif;
+    font-size: 16px;
+    color: rgb(29, 43, 56);
+}
+
+.comment-time {
+    font-family: "Hepta Slab", serif;
+    font-size: 12px;
+    color: rgb(136, 156, 168);
+}
+
+.delete-comment-btn {
+    background: none;
+    border: none;
+    color: rgb(136, 156, 168);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.delete-comment-btn:hover {
+    color: rgb(29, 43, 56);
+}
+
+.comment-body {
+    margin-bottom: 10px;
+}
+
+.comment-body p {
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgb(29, 43, 56);
+    margin: 0;
+}
+
+.reply-btn {
+    background: none;
+    border: none;
+    color: rgb(136, 156, 168);
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 0;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.reply-btn:hover {
+    color: rgb(29, 43, 56);
+}
+
+.replies {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgb(136, 156, 168);
+}
+
+.reply-form {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(136, 156, 168);
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(136, 156, 168);
+    border-radius: 4px;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.reply-form textarea:focus {
+    outline: none;
+    border-color: rgb(29, 43, 56);
+}
+
+.reply-form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.submit-reply-btn,
+.cancel-reply-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Hepta Slab", serif;
+    font-size: 12px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.submit-reply-btn {
+    background-color: rgb(136, 156, 168);
+    color: white;
+}
+
+.submit-reply-btn:hover {
+    background-color: rgb(29, 43, 56);
+}
+
+.cancel-reply-btn {
+    background-color: transparent;
+    color: rgb(136, 156, 168);
+    border: 1px solid rgb(136, 156, 168);
+}
+
+.cancel-reply-btn:hover {
+    background-color: rgb(136, 156, 168);
+    color: white;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 699px) {
+    .comments-section {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .comments-title {
+        font-size: 24px;
+    }
+
+    .comment-reply {
+        margin-left: 15px;
+    }
+
+    .reply-form {
+        padding: 10px;
+    }
+
+    .reply-form-actions {
+        flex-direction: column;
+    }
+
+    .submit-reply-btn,
+    .cancel-reply-btn {
+        width: 100%;
+    }
+}
+

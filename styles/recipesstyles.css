@@ -13,7 +13,7 @@ body {
 html, body{
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 .main_section {
@@ -24,7 +24,7 @@ html, body{
     padding: 20px;
     background-color: rgb(136, 156, 168);
     flex: 1;
-    height: 100vh; 
+    min-height: calc(100vh - 200px);
 }
 
 .top_section {
@@ -82,6 +82,7 @@ footer {
 
     .recipe_img {
         width: 100%;
-        height: 1000px
+        height: 1000px;
+        object-fit: cover;
     }
 }
