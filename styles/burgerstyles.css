@@ -54,22 +54,22 @@ li{
 
 @media screen and (min-width: 915px) {
     main{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: auto auto;
+        gap: 0;
     }
 
-    .recipe-picture{
-        width: 60%;
-        flex: 0 0 60%;
-        max-width: 60%;
+    .recipe-picture {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
     }
 
-    .recipe-text{
-        width: 40%;
-        flex: 0 0 40%;
-        max-width: 40%;
+    .recipe-text {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
     }
     
     .recipe-text p{
@@ -77,12 +77,11 @@ li{
         margin-bottom: -20px;
     }
 
+    /* Comments below both, full width */
     #comments-container {
+        grid-column: 1 / -1;
+        grid-row: 2;
         width: 100%;
-        flex: 1 1 100%;
-        min-width: 100%;
-        order: 3;
-        clear: both;
         margin-top: 20px;
     }
     }
