@@ -2,6 +2,13 @@ html, body{
     margin: 0;
     padding: 0;
     border: 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 footer {
@@ -31,8 +38,10 @@ main{
 
 img{
     width: 100%;
+    max-width: 100%;
     height: auto;
     object-fit: cover;
+    display: block;
 }
 
 .recipe-text{
@@ -59,24 +68,31 @@ li{
         grid-template-rows: auto auto;
         gap: 0;
         margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
     }
 
     .recipe-picture {
         grid-column: 1;
         grid-row: 1;
         width: 100%;
+        max-width: 100%;
         margin: 20px;
         padding: 25px;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     .recipe-text {
         grid-column: 2;
         grid-row: 1;
         width: 100%;
+        max-width: 100%;
         margin: 20px;
         padding: 25px;
         box-sizing: border-box;
+        overflow: hidden;
     }
     
     .recipe-text p{

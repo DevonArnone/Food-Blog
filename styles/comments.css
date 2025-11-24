@@ -1,7 +1,9 @@
 /* Comments Section Styles */
 #comments-container {
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .comments-section {
@@ -11,8 +13,9 @@
     box-shadow: 0 0px 6px black;
     border-radius: 8px;
     width: calc(100% - 40px);
-    max-width: 100%;
+    max-width: calc(100% - 40px);
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .comments-title {
