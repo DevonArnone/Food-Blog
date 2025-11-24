@@ -6,7 +6,7 @@ html {
     overflow-y: hidden;
     width: 100%;
     max-width: 100%;
-    height: auto;
+    height: auto !important;
 }
 
 body {
