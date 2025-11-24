@@ -154,7 +154,13 @@ class CommentManager {
         if (loginLink) {
             loginLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.getElementById('auth-container')?.scrollIntoView({ behavior: 'smooth' });
+                // Open the login modal from auth manager
+                if (window.authManager && typeof window.authManager.showLoginModal === 'function') {
+                    window.authManager.showLoginModal();
+                } else {
+                    // Fallback: scroll to auth container
+                    document.getElementById('auth-container')?.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         }
     }

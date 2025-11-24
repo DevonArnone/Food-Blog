@@ -54,6 +54,170 @@
     min-width: 200px;
 }
 
+.google-sso-btn,
+.username-login-btn {
+    background-color: rgb(29, 43, 56);
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.google-sso-btn:hover,
+.username-login-btn:hover {
+    background-color: white;
+    color: rgb(29, 43, 56);
+}
+
+/* Login Modal Styles */
+.login-modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(136, 156, 168);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: rgb(29, 43, 56);
+}
+
+.login-modal-content h2 {
+    font-family: "Goblin One", serif;
+    color: rgb(29, 43, 56);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgb(136, 156, 168);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-family: "Hepta Slab", serif;
+    font-size: 16px;
+    color: rgb(136, 156, 168);
+    transition: all 0.3s ease;
+    margin-bottom: -2px;
+}
+
+.tab-btn.active {
+    color: rgb(29, 43, 56);
+    border-bottom-color: rgb(29, 43, 56);
+    font-weight: bold;
+}
+
+.tab-btn:hover {
+    color: rgb(29, 43, 56);
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    color: rgb(29, 43, 56);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgb(136, 156, 168);
+    border-radius: 4px;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgb(29, 43, 56);
+    box-shadow: 0 0 5px rgba(29, 43, 56, 0.3);
+}
+
+.submit-auth-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(136, 156, 168);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: "Hepta Slab", serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.submit-auth-btn:hover {
+    background-color: rgb(29, 43, 56);
+}
+
+.error-message {
+    color: #d32f2f;
+    font-family: "Hepta Slab", serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+
 /* Mobile adjustments */
 @media screen and (max-width: 699px) {
     #auth-container {
@@ -62,6 +226,8 @@
         padding: 10px;
         margin-top: 10px;
         order: 3;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .head-right {
@@ -84,9 +250,22 @@
         max-width: 200px;
     }
 
+    .google-sso-btn,
+    .username-login-btn {
+        width: 100%;
+        max-width: 250px;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
     #google-signin-button {
         width: 100%;
         max-width: 250px;
+    }
+
+    .login-modal-content {
+        padding: 20px;
+        margin: 20px;
     }
 }
 
