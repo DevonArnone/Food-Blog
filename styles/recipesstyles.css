@@ -36,9 +36,9 @@ body {
     align-items: center; 
     padding: 20px;
     background-color: rgb(136, 156, 168);
-    flex: 1;
     min-height: calc(100vh - 200px);
     width: 100%;
+    flex-shrink: 0;
 }
 
 .top_section {
