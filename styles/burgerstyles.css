@@ -57,16 +57,19 @@ li{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
 
     .recipe-picture{
         width: 60%;
         flex: 0 0 60%;
+        max-width: 60%;
     }
 
     .recipe-text{
         width: 40%;
         flex: 0 0 40%;
+        max-width: 40%;
     }
     
     .recipe-text p{
@@ -76,7 +79,10 @@ li{
 
     #comments-container {
         width: 100%;
-        flex: 0 0 100%;
+        flex: 1 1 100%;
+        min-width: 100%;
         order: 3;
+        clear: both;
+        margin-top: 20px;
     }
     }
