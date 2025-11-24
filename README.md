@@ -1,6 +1,8 @@
 # 🍴 Forks & Freedom
 
-A beginner-friendly cooking website made for guys who want to learn their way around the kitchen.
+A beginner-friendly cooking website made for guys who want to learn their way around the kitchen. 
+
+View the website at https://devonarnone.github.io/Food-Blog
 
 
 ## 📌 Overview
