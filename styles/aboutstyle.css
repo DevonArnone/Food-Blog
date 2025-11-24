@@ -6,6 +6,7 @@ html {
     overflow-y: hidden;
     width: 100%;
     max-width: 100%;
+    height: auto;
 }
 
 body {
@@ -13,9 +14,11 @@ body {
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto !important;
     width: 100%;
     max-width: 100%;
+    height: auto;
+    min-height: 100vh;
 }
 
 * {
