@@ -383,67 +383,95 @@ function initializeRecipeDetailPage() {
   document.title = `Forks & Freedom | ${recipe.title}`;
   titleNode.textContent = recipe.title;
   layoutNode.innerHTML = `
-    <section class="detail-layout">
-      <article class="detail-card detail-image">
+    <section class="detail-layout detail-layout--hero">
+      <article class="detail-card detail-media-card">
         ${getRecipeImage(recipe, "recipe-card__media detail-media")}
       </article>
 
-      <aside class="detail-sidebar">
-        <article class="detail-card detail-hero">
+      <article class="detail-card detail-summary">
+        <div class="detail-summary__header">
           <span class="eyebrow">${recipe.category}</span>
           <h1>${recipe.title}</h1>
           <p class="detail-lead">${recipe.description}</p>
+        </div>
+
+        <div class="detail-meta-cluster">
           <div class="meta-row">
             <span class="tag">${recipe.cuisine}</span>
             <span class="tag">${recipe.difficulty}</span>
             <span class="tag">${recipe.servings} servings</span>
             ${recipe.userSubmitted ? '<span class="tag">Community Added</span>' : ""}
+            ${recipe.dietaryTags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
           </div>
           <div class="button-row">
             ${favoriteButtonMarkup(recipe)}
+            <a class="button-secondary" href="#recipe-instructions">Jump to steps</a>
           </div>
-          <div class="stats-grid">
-            <article class="stats-card">
-              <strong>${recipe.prepMinutes} min</strong>
-              <p>Prep time</p>
-            </article>
-            <article class="stats-card">
-              <strong>${recipe.cookMinutes} min</strong>
-              <p>Cook time</p>
-            </article>
-            <article class="stats-card">
-              <strong>${totalCookTime(recipe)} min</strong>
-              <p>Total time</p>
-            </article>
-          </div>
-        </article>
+        </div>
 
-        <article class="detail-card">
-          <h2>Ingredients</h2>
-          <ul class="checklist">
-            ${recipe.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
-          </ul>
-        </article>
-      </aside>
+        <div class="stats-grid">
+          <article class="stats-card">
+            <strong>${recipe.prepMinutes} min</strong>
+            <p>Prep time</p>
+          </article>
+          <article class="stats-card">
+            <strong>${recipe.cookMinutes} min</strong>
+            <p>Cook time</p>
+          </article>
+          <article class="stats-card">
+            <strong>${totalCookTime(recipe)} min</strong>
+            <p>Total time</p>
+          </article>
+          <article class="stats-card">
+            <strong>${recipe.servings}</strong>
+            <p>Servings</p>
+          </article>
+        </div>
+
+        <div class="detail-divider" aria-hidden="true"></div>
+
+        <div class="detail-highlights">
+          <p class="detail-muted">Built for ${recipe.category.toLowerCase()} nights with a ${recipe.difficulty.toLowerCase()}-friendly workflow and clear ingredient prep.</p>
+        </div>
+      </article>
     </section>
 
-    <section class="two-column">
-      <article class="detail-card">
-        <h2>Instructions</h2>
+    <section class="detail-content-grid">
+      <article class="detail-card detail-prose" id="recipe-instructions">
+        <div class="detail-section-heading">
+          <span class="pill">Method</span>
+          <h2>Instructions</h2>
+          <p>Use the step list as a quick cooking flow, then reference the snapshot for serving context and recipe notes.</p>
+        </div>
         <ol class="step-list">
           ${recipe.instructions.map((step) => `<li>${step}</li>`).join("")}
         </ol>
       </article>
 
-      <article class="detail-card">
-        <h2>Recipe Snapshot</h2>
-        <ul class="list-clean">
-          <li><strong>Cuisine:</strong> ${recipe.cuisine}</li>
-          <li><strong>Difficulty:</strong> ${recipe.difficulty}</li>
-          <li><strong>Dietary tags:</strong> ${recipe.dietaryTags.join(", ")}</li>
-          <li><strong>Best for:</strong> ${recipe.category}</li>
-        </ul>
-      </article>
+      <aside class="detail-sidebar-stack">
+        <article class="detail-card">
+          <div class="detail-section-heading">
+            <span class="pill">Ingredients</span>
+            <h2>What you need</h2>
+          </div>
+          <ul class="checklist">
+            ${recipe.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}
+          </ul>
+        </article>
+
+        <article class="detail-card detail-prose">
+          <div class="detail-section-heading">
+            <span class="pill">Snapshot</span>
+            <h2>Recipe snapshot</h2>
+          </div>
+          <ul class="list-clean">
+            <li><strong>Cuisine:</strong> ${recipe.cuisine}</li>
+            <li><strong>Difficulty:</strong> ${recipe.difficulty}</li>
+            <li><strong>Dietary tags:</strong> ${recipe.dietaryTags.join(", ")}</li>
+            <li><strong>Best for:</strong> ${recipe.category}</li>
+          </ul>
+        </article>
+      </aside>
     </section>
 
     <section class="section">
