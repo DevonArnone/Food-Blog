@@ -92,6 +92,27 @@ function saveRecipeComments(slug, comments) {
   safeWriteStorage(commentsKey(slug), comments);
 }
 
+function allRecipeComments() {
+  return allRecipes()
+    .flatMap((recipe) =>
+      recipeComments(recipe.slug).map((comment) => ({
+        ...comment,
+        recipeSlug: recipe.slug,
+        recipeTitle: recipe.title
+      }))
+    )
+    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+}
+
+function myRecipeComments() {
+  const userId = window.authManager?.getUser()?.id;
+  if (!userId) {
+    return [];
+  }
+
+  return allRecipeComments().filter((comment) => comment.userId === userId);
+}
+
 function addRecipeComment(slug, text) {
   const user = window.authManager?.getUser();
   if (!user) {
@@ -771,6 +792,7 @@ function initializeDashboardPage() {
 
   const metrics = page.querySelector("[data-dashboard-metrics]");
   const recipesGrid = page.querySelector("[data-dashboard-recipes]");
+  const commentsList = page.querySelector("[data-dashboard-comments]");
 
   function render() {
     if (window.authManager && !window.authManager.isAuthenticated()) {
@@ -784,6 +806,7 @@ function initializeDashboardPage() {
     }
 
     const mine = mySubmittedRecipes();
+    const myComments = myRecipeComments();
     const recent = mine[0];
     metrics.innerHTML = `
       <article class="stats-card">
@@ -793,6 +816,10 @@ function initializeDashboardPage() {
       <article class="stats-card">
         <strong>${favoriteSlugs().length}</strong>
         <p>Recipes saved</p>
+      </article>
+      <article class="stats-card">
+        <strong>${myComments.length}</strong>
+        <p>Comments posted</p>
       </article>
       <article class="stats-card">
         <strong>${recent ? recent.title : "None yet"}</strong>
@@ -805,6 +832,29 @@ function initializeDashboardPage() {
       mine,
       "Your submitted recipes will appear here after you use the recipe submission form."
     );
+
+    commentsList.innerHTML = myComments.length
+      ? myComments
+          .slice(0, 4)
+          .map(
+            (comment) => `
+              <article class="detail-card comment-card">
+                <div class="comment-card__header">
+                  <div class="comment-card__author">
+                    <img class="comment-card__avatar" src="${comment.userPicture}" alt="${escapeHtml(comment.userName)}">
+                    <div>
+                      <strong>${escapeHtml(comment.userName)}</strong>
+                      <p><a href="recipe.html?slug=${encodeURIComponent(comment.recipeSlug)}">${escapeHtml(comment.recipeTitle)}</a> · ${formatCommentTime(comment.timestamp)}</p>
+                    </div>
+                  </div>
+                </div>
+                <p>${escapeHtml(comment.text)}</p>
+              </article>
+            `
+          )
+          .join("")
+      : `<article class="detail-card empty-state"><p>Your recipe comments will appear here once you start joining the conversation.</p></article>`;
+
     syncFavoriteButtons();
   }
 
@@ -868,6 +918,7 @@ function initializeSubmitPage() {
 
   const form = page.querySelector("[data-submit-form]");
   const feedback = page.querySelector("[data-submit-feedback]");
+  const prompt = page.querySelector("[data-submit-auth-prompt]");
 
   function ensureAuthenticated() {
     if (window.authManager?.isAuthenticated()) {
@@ -881,6 +932,42 @@ function initializeSubmitPage() {
       next: "submit.html"
     });
     return false;
+  }
+
+  function updateSubmissionAccess() {
+    const isAuthenticated = window.authManager?.isAuthenticated();
+    form.querySelectorAll("input, select, textarea, button").forEach((field) => {
+      field.disabled = !isAuthenticated;
+    });
+
+    if (isAuthenticated) {
+      if (prompt) {
+        prompt.innerHTML = "";
+      }
+      feedback.hidden = true;
+      feedback.dataset.tone = "success";
+      return;
+    }
+
+    if (prompt) {
+      prompt.innerHTML = `
+        <article class="detail-card detail-prose">
+          <div class="detail-section-heading">
+            <span class="pill">Account Required</span>
+            <h2>Sign in before submitting a recipe</h2>
+            <p>Recipe submissions are tied to your account so your dashboard, saved recipes, and comments stay connected.</p>
+          </div>
+          <div class="button-row">
+            <a class="button" href="login.html?next=${encodeURIComponent("submit.html")}">Log In</a>
+            <a class="button-secondary" href="signup.html?next=${encodeURIComponent("submit.html")}">Create Account</a>
+          </div>
+        </article>
+      `;
+    }
+
+    feedback.hidden = false;
+    feedback.dataset.tone = "info";
+    feedback.textContent = "Log in to unlock recipe submissions.";
   }
 
   form.addEventListener("submit", (event) => {
@@ -946,6 +1033,9 @@ function initializeSubmitPage() {
     feedback.hidden = false;
     feedback.textContent = "Recipe submitted. It is now available in the dashboard, search, and recipe browse pages.";
   });
+
+  window.addEventListener("auth:changed", updateSubmissionAccess);
+  updateSubmissionAccess();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
