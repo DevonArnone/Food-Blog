@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Manage your Forks & Freedom account profile and saved recipe preferences.">
+    <title>Forks & Freedom | Account</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/config.js" defer></script>
+    <script src="javascript/auth.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell" data-protected-page data-protected-title="Manage your account" data-protected-message="Sign in to review profile details, saved recipes, and your community activity.">
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Account</span>
+                <h1>Keep your profile, saved recipes, and publishing workflow aligned.</h1>
+                <p>Use this page to manage the reader-facing account details behind your saved recipes and recipe comments.</p>
+            </article>
+        </section>
+
+        <div class="account-layout" data-account-page>
+            <article class="detail-card account-card">
+                <div class="account-card__hero">
+                    <img class="account-avatar" src="" alt="" data-account-avatar>
+                    <div class="detail-section-heading">
+                        <span class="pill">Profile</span>
+                        <h2>Account details</h2>
+                        <p><strong>Sign-in method:</strong> <span data-account-provider></span></p>
+                        <p><strong>Joined:</strong> <span data-account-joined></span></p>
+                    </div>
+                </div>
+                <p class="status-banner" data-auth-message="account" hidden></p>
+                <form class="form-grid" data-account-form>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="account-name">Full name</label>
+                            <input id="account-name" data-account-name name="name" type="text" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="account-username">Username</label>
+                            <input id="account-username" data-account-username name="username" type="text" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="account-email">Email</label>
+                        <input id="account-email" data-account-email name="email" type="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="account-bio">Short bio</label>
+                        <textarea id="account-bio" data-account-bio name="bio" placeholder="Tell readers what you like to cook."></textarea>
+                    </div>
+                    <div class="button-row">
+                        <button class="button" type="submit">Save Profile</button>
+                        <button class="button-secondary" type="button" data-account-signout>Sign Out</button>
+                    </div>
+                </form>
+            </article>
+
+            <article class="panel">
+                <span class="pill">Next Steps</span>
+                <h2 class="section-title">Use your account across the product.</h2>
+                <ul class="list-clean">
+                    <li><a href="favorites.html">Review saved recipes</a></li>
+                    <li><a href="dashboard.html">Open your recipe activity</a></li>
+                    <li><a href="submit.html">Submit a new recipe</a></li>
+                </ul>
+            </article>
+        </div>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

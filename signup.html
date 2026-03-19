@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create a Forks & Freedom account to save recipes and comment on posts.">
+    <title>Forks & Freedom | Sign Up</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/config.js" defer></script>
+    <script src="javascript/auth.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell">
+        <section class="page-hero auth-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Create Account</span>
+                <h1>Start a cleaner, more personal food blog experience.</h1>
+                <p>Create an account to save recipes, comment on favorites, and manage your own contributions.</p>
+            </article>
+        </section>
+
+        <section class="auth-layout">
+            <article class="detail-card auth-card">
+                <div class="detail-section-heading">
+                    <span class="pill">Sign Up</span>
+                    <h2>Create your profile</h2>
+                </div>
+                <p class="status-banner" data-auth-message="signup" hidden></p>
+                <form class="form-grid" data-signup-form>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="signup-name">Full name</label>
+                            <input id="signup-name" name="name" type="text" placeholder="Jordan Lee" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-username">Username</label>
+                            <input id="signup-username" name="username" type="text" placeholder="jordanlee" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input id="signup-email" name="email" type="email" placeholder="jordan@example.com" required>
+                    </div>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="signup-password">Password</label>
+                            <input id="signup-password" name="password" type="password" placeholder="At least 8 characters" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-confirm-password">Confirm password</label>
+                            <input id="signup-confirm-password" name="confirmPassword" type="password" placeholder="Re-enter password" required>
+                        </div>
+                    </div>
+                    <button class="button" type="submit">Create Account</button>
+                </form>
+                <div class="auth-divider"><span>or continue with</span></div>
+                <div data-google-signup-button></div>
+                <div class="auth-footer-links">
+                    <a href="login.html">Already have an account? Log in</a>
+                </div>
+            </article>
+
+            <article class="panel">
+                <span class="pill">Included</span>
+                <h2 class="section-title">Account tools built for realistic product flows.</h2>
+                <p>Traditional email and password auth stays available, while Google entry points can be enabled with a client ID for a cleaner portfolio demo.</p>
+                <p class="detail-muted">Profiles, saved recipes, comments, and submissions all use the same local-first persistence model in this static app.</p>
+            </article>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

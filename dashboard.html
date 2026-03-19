@@ -7,12 +7,14 @@
     <title>Forks & Freedom | My Recipes</title>
     <link rel="stylesheet" href="styles/site.css">
     <script src="javascript/site.js" defer></script>
+    <script src="javascript/config.js" defer></script>
+    <script src="javascript/auth.js" defer></script>
     <script src="javascript/recipe-data.js" defer></script>
     <script src="javascript/recipes-app.js" defer></script>
 </head>
 <body>
     <header data-site-header></header>
-    <main class="page-shell" data-dashboard-page>
+    <main class="page-shell" data-dashboard-page data-protected-page data-protected-title="Track your saved recipes and submissions" data-protected-message="Sign in to view your personal activity, submitted recipes, and saved collection in one place.">
         <section class="page-hero">
             <article class="hero-copy">
                 <span class="eyebrow">My Recipes</span>

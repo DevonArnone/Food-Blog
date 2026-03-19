@@ -1,5 +1,6 @@
 const FAVORITES_KEY = "forks-freedom-favorites";
 const SUBMISSIONS_KEY = "forks-freedom-submissions";
+const COMMENTS_KEY_PREFIX = "forks-freedom-comments";
 
 function totalCookTime(recipe) {
   return Number(recipe.prepMinutes) + Number(recipe.cookMinutes);
@@ -29,7 +30,16 @@ function slugify(text) {
     .replace(/^-+|-+$/g, "");
 }
 
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = String(text || "");
+  return div.innerHTML;
+}
+
 function favoriteSlugs() {
+  if (window.authManager?.isAuthenticated()) {
+    return window.authManager.getSavedRecipes();
+  }
   return safeReadStorage(FAVORITES_KEY, []);
 }
 
@@ -53,6 +63,15 @@ function submittedRecipes() {
   }));
 }
 
+function mySubmittedRecipes() {
+  const userId = window.authManager?.getUser()?.id;
+  if (!userId) {
+    return [];
+  }
+
+  return submittedRecipes().filter((recipe) => recipe.authorId === userId);
+}
+
 function allRecipes() {
   return [...(window.RECIPES || []), ...submittedRecipes()];
 }
@@ -61,11 +80,142 @@ function findRecipe(slug) {
   return allRecipes().find((recipe) => recipe.slug === slug);
 }
 
+function commentsKey(slug) {
+  return `${COMMENTS_KEY_PREFIX}:${slug}`;
+}
+
+function recipeComments(slug) {
+  return safeReadStorage(commentsKey(slug), []);
+}
+
+function saveRecipeComments(slug, comments) {
+  safeWriteStorage(commentsKey(slug), comments);
+}
+
+function addRecipeComment(slug, text) {
+  const user = window.authManager?.getUser();
+  if (!user) {
+    return { success: false, requiresAuth: true };
+  }
+
+  const comments = recipeComments(slug);
+  const nextComment = {
+    id: `comment-${Date.now()}`,
+    recipeSlug: slug,
+    userId: user.id,
+    userName: user.name,
+    userPicture: user.picture,
+    text: text.trim(),
+    timestamp: new Date().toISOString()
+  };
+  saveRecipeComments(slug, [nextComment, ...comments]);
+  return { success: true };
+}
+
+function deleteRecipeComment(slug, commentId) {
+  const user = window.authManager?.getUser();
+  if (!user) {
+    return;
+  }
+
+  const nextComments = recipeComments(slug).filter(
+    (comment) => !(comment.id === commentId && comment.userId === user.id)
+  );
+  saveRecipeComments(slug, nextComments);
+}
+
+function formatCommentTime(timestamp) {
+  const date = new Date(timestamp);
+  const diffMs = Date.now() - date.getTime();
+  const minutes = Math.floor(diffMs / 60000);
+  const hours = Math.floor(diffMs / 3600000);
+  const days = Math.floor(diffMs / 86400000);
+
+  if (minutes < 1) return "Just now";
+  if (minutes < 60) return `${minutes} min ago`;
+  if (hours < 24) return `${hours} hr ago`;
+  if (days < 7) return `${days} day${days === 1 ? "" : "s"} ago`;
+  return date.toLocaleDateString();
+}
+
+function commentListMarkup(slug) {
+  const user = window.authManager?.getUser();
+  const comments = recipeComments(slug);
+
+  if (!comments.length) {
+    return `
+      <article class="detail-card empty-state">
+        <p>No comments yet. Be the first reader to share a note, serving tip, or quick review.</p>
+      </article>
+    `;
+  }
+
+  return comments
+    .map((comment) => {
+      const ownsComment = user && user.id === comment.userId;
+      return `
+        <article class="detail-card comment-card" data-comment-id="${comment.id}">
+          <div class="comment-card__header">
+            <div class="comment-card__author">
+              <img class="comment-card__avatar" src="${comment.userPicture}" alt="${comment.userName}">
+              <div>
+                <strong>${escapeHtml(comment.userName)}</strong>
+                <p>${formatCommentTime(comment.timestamp)}</p>
+              </div>
+            </div>
+            ${ownsComment ? `<button class="button-secondary comment-card__delete" type="button" data-comment-delete="${comment.id}">Delete</button>` : ""}
+          </div>
+          <p>${escapeHtml(comment.text)}</p>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function commentComposerMarkup(recipe) {
+  if (window.authManager?.isAuthenticated()) {
+    return `
+      <article class="detail-card detail-prose">
+        <div class="detail-section-heading">
+          <span class="pill">Leave a Comment</span>
+          <h2>Share your take</h2>
+          <p>Keep it useful: swaps, serving notes, or what you would cook with it next.</p>
+        </div>
+        <form class="form-grid" data-comment-form data-comment-slug="${recipe.slug}">
+          <div class="input-group">
+            <label for="comment-text">Comment</label>
+            <textarea id="comment-text" name="comment" placeholder="I made this for a weeknight dinner and doubled the vegetables..." required></textarea>
+          </div>
+          <button class="button" type="submit">Post Comment</button>
+        </form>
+      </article>
+    `;
+  }
+
+  return `
+    <article class="detail-card detail-prose">
+      <div class="detail-section-heading">
+        <span class="pill">Comments</span>
+        <h2>Sign in to join the conversation</h2>
+        <p>Comments are tied to your account so saved recipes and feedback stay connected.</p>
+      </div>
+      <div class="button-row">
+        <a class="button" href="login.html?next=${encodeURIComponent(`recipe.html?slug=${recipe.slug}`)}">Log In</a>
+        <a class="button-secondary" href="signup.html?next=${encodeURIComponent(`recipe.html?slug=${recipe.slug}`)}">Create Account</a>
+      </div>
+    </article>
+  `;
+}
+
 function isFavorite(slug) {
   return favoriteSlugs().includes(slug);
 }
 
 function toggleFavorite(slug) {
+  if (window.authManager?.toggleSavedRecipe) {
+    return window.authManager.toggleSavedRecipe(slug);
+  }
+
   const favorites = favoriteSlugs();
   const nextFavorites = favorites.includes(slug)
     ? favorites.filter((value) => value !== slug)
@@ -73,6 +223,7 @@ function toggleFavorite(slug) {
 
   safeWriteStorage(FAVORITES_KEY, nextFavorites);
   document.dispatchEvent(new CustomEvent("favorites:updated"));
+  return { success: true, saved: nextFavorites.includes(slug) };
 }
 
 function saveSubmission(recipe) {
@@ -110,7 +261,7 @@ function favoriteButtonMarkup(recipe) {
       data-slug="${recipe.slug}"
       aria-pressed="${String(active)}"
     >
-      ${active ? "Saved" : "Save"}
+      ${active ? "Saved" : "Save Recipe"}
     </button>
   `;
 }
@@ -179,7 +330,7 @@ function syncFavoriteButtons() {
     const active = isFavorite(slug);
     button.setAttribute("aria-pressed", String(active));
     button.classList.toggle("favorite-button--active", active);
-    button.textContent = active ? "Saved" : "Save";
+    button.textContent = active ? "Saved" : "Save Recipe";
   });
 }
 
@@ -190,7 +341,14 @@ function attachFavoriteHandler() {
       return;
     }
 
-    toggleFavorite(button.getAttribute("data-slug"));
+    const result = toggleFavorite(button.getAttribute("data-slug"));
+    if (result?.requiresAuth) {
+      window.authManager?.requireAuth({
+        message: "Log in to save recipes to your account.",
+        next: `${window.location.pathname.split("/").pop() || "recipes.html"}${window.location.search}`
+      });
+      return;
+    }
     syncFavoriteButtons();
   });
 }
@@ -482,6 +640,17 @@ function initializeRecipeDetailPage() {
       <div class="stats-grid">${nutritionMarkup}</div>
     </section>
 
+    <section class="detail-content-grid">
+      ${commentComposerMarkup(recipe)}
+      <div class="detail-sidebar-stack">
+        <div class="detail-section-heading">
+          <span class="pill">Reader Notes</span>
+          <h2>Recipe comments</h2>
+        </div>
+        ${commentListMarkup(recipe.slug)}
+      </div>
+    </section>
+
     <section class="section">
       <div>
         <span class="pill">Related Recipes</span>
@@ -494,6 +663,35 @@ function initializeRecipeDetailPage() {
   `;
 
   syncFavoriteButtons();
+  attachRecipeCommentHandlers(recipe.slug);
+}
+
+function attachRecipeCommentHandlers(slug) {
+  document.querySelector("[data-comment-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const textarea = form.querySelector("textarea");
+    if (!textarea || !textarea.value.trim()) {
+      return;
+    }
+
+    const result = addRecipeComment(slug, textarea.value);
+    if (result.requiresAuth) {
+      window.authManager?.requireAuth({
+        message: "Log in to comment on recipes.",
+        next: `recipe.html?slug=${encodeURIComponent(slug)}`
+      });
+      return;
+    }
+    initializeRecipeDetailPage();
+  });
+
+  document.querySelectorAll("[data-comment-delete]").forEach((button) => {
+    button.addEventListener("click", () => {
+      deleteRecipeComment(slug, button.getAttribute("data-comment-delete"));
+      initializeRecipeDetailPage();
+    });
+  });
 }
 
 function initializeCategoriesPage() {
@@ -527,7 +725,7 @@ function initializeCategoriesPage() {
 
 function initializeFavoritesPage() {
   const page = document.querySelector("[data-favorites-page]");
-  if (!page) {
+  if (!page || page.hasAttribute("data-auth-blocked")) {
     return;
   }
 
@@ -535,6 +733,20 @@ function initializeFavoritesPage() {
   const count = page.querySelector("[data-favorites-count]");
 
   function render() {
+    if (window.authManager && !window.authManager.isAuthenticated()) {
+      count.textContent = "Sign in to unlock your saved collection";
+      grid.innerHTML = `
+        <article class="detail-card empty-state">
+          <p>Saved recipes are tied to your account so you can keep a personal shortlist across the site.</p>
+          <div class="button-row">
+            <a class="button" href="login.html?next=${encodeURIComponent("favorites.html")}">Log In</a>
+            <a class="button-secondary" href="signup.html?next=${encodeURIComponent("favorites.html")}">Create Account</a>
+          </div>
+        </article>
+      `;
+      return;
+    }
+
     const recipes = allRecipes().filter((recipe) => isFavorite(recipe.slug));
     count.textContent = `${recipes.length} saved recipe${recipes.length === 1 ? "" : "s"}`;
     renderRecipeCollection(
@@ -547,12 +759,13 @@ function initializeFavoritesPage() {
 
   document.addEventListener("favorites:updated", render);
   document.addEventListener("submissions:updated", render);
+  window.addEventListener("auth:changed", render);
   render();
 }
 
 function initializeDashboardPage() {
   const page = document.querySelector("[data-dashboard-page]");
-  if (!page) {
+  if (!page || page.hasAttribute("data-auth-blocked")) {
     return;
   }
 
@@ -560,7 +773,17 @@ function initializeDashboardPage() {
   const recipesGrid = page.querySelector("[data-dashboard-recipes]");
 
   function render() {
-    const mine = submittedRecipes();
+    if (window.authManager && !window.authManager.isAuthenticated()) {
+      metrics.innerHTML = `
+        <article class="detail-card empty-state">
+          <p>Sign in to view your recipe activity, submissions, and saved recipes in one place.</p>
+        </article>
+      `;
+      recipesGrid.innerHTML = "";
+      return;
+    }
+
+    const mine = mySubmittedRecipes();
     const recent = mine[0];
     metrics.innerHTML = `
       <article class="stats-card">
@@ -587,6 +810,7 @@ function initializeDashboardPage() {
 
   document.addEventListener("submissions:updated", render);
   document.addEventListener("favorites:updated", render);
+  window.addEventListener("auth:changed", render);
   render();
 }
 
@@ -645,8 +869,25 @@ function initializeSubmitPage() {
   const form = page.querySelector("[data-submit-form]");
   const feedback = page.querySelector("[data-submit-feedback]");
 
+  function ensureAuthenticated() {
+    if (window.authManager?.isAuthenticated()) {
+      return true;
+    }
+
+    feedback.textContent = "Log in or create an account before submitting a recipe.";
+    feedback.hidden = false;
+    window.authManager?.requireAuth({
+      message: "Create an account to submit recipes to Forks & Freedom.",
+      next: "submit.html"
+    });
+    return false;
+  }
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (!ensureAuthenticated()) {
+      return;
+    }
     const formData = new FormData(form);
 
     const title = String(formData.get("title") || "").trim();
@@ -680,6 +921,8 @@ function initializeSubmitPage() {
       slug: slugify(title),
       title,
       description,
+      authorId: window.authManager?.getUser()?.id || "anonymous",
+      authorName: window.authManager?.getUser()?.name || "Guest",
       category,
       cuisine,
       difficulty,

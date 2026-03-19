@@ -1,8 +1,9 @@
 const navLinks = [
   { href: "index.html", label: "Home" },
   { href: "recipes.html", label: "Recipes" },
+  { href: "blog.html", label: "Blog" },
   { href: "categories.html", label: "Categories" },
-  { href: "favorites.html", label: "Favorites" },
+  { href: "favorites.html", label: "Saved" },
   { href: "about.html", label: "About" },
   { href: "contact.html", label: "Contact" }
 ];
@@ -54,7 +55,10 @@ function injectSiteHeader() {
           ${linksMarkup}
         </ul>
       </nav>
-      <a class="button site-header__cta" href="submit.html">Submit Recipe</a>
+      <div class="site-header__actions">
+        <div data-auth-shell></div>
+        <a class="button site-header__cta" href="submit.html">Submit Recipe</a>
+      </div>
     </div>
   `;
 
@@ -77,6 +81,8 @@ function injectSiteHeader() {
       toggle.setAttribute("aria-expanded", "false");
     }
   });
+
+  document.dispatchEvent(new CustomEvent("site:shell-ready"));
 }
 
 function injectSiteFooter() {

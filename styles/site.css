@@ -152,8 +152,85 @@ main {
     gap: 1rem;
 }
 
+.site-header__actions,
+.auth-shell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
 .site-header__cta {
     min-width: 0;
+}
+
+.auth-shell__signup {
+    min-height: 44px;
+}
+
+.auth-chip,
+.profile-menu__summary,
+.profile-menu__button,
+.profile-menu__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(24, 37, 30, 0.12);
+    background: rgba(255, 250, 243, 0.82);
+    color: var(--text);
+    font-weight: 700;
+}
+
+.profile-menu {
+    position: relative;
+}
+
+.profile-menu summary {
+    list-style: none;
+}
+
+.profile-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.profile-menu__summary {
+    gap: 0.65rem;
+    cursor: pointer;
+}
+
+.profile-menu__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.profile-menu__panel {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    display: grid;
+    gap: 0.55rem;
+    min-width: 240px;
+    padding: 1rem;
+    border: 1px solid rgba(24, 37, 30, 0.08);
+    border-radius: 24px;
+    background: rgba(255, 250, 243, 0.98);
+    box-shadow: var(--shadow-lg);
+}
+
+.profile-menu__meta {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--text-muted);
+}
+
+.profile-menu__button {
+    width: 100%;
 }
 
 .site-nav__toggle {
@@ -691,6 +768,127 @@ main {
     background: rgba(24, 37, 30, 0.08);
 }
 
+.auth-layout,
+.account-layout,
+.auth-card,
+.account-card,
+.account-card__hero,
+.auth-footer-links,
+.auth-provider-callout,
+.auth-benefits,
+.comment-card,
+.comment-card__header,
+.comment-card__author {
+    display: grid;
+    gap: 1rem;
+}
+
+.auth-layout {
+    gap: 1.5rem;
+}
+
+.auth-layout--single {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    gap: 1.25rem;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(24, 37, 30, 0.1);
+}
+
+.auth-footer-links {
+    gap: 0.6rem;
+}
+
+.auth-footer-links a {
+    color: var(--accent-dark);
+    font-weight: 700;
+}
+
+.auth-provider-callout {
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(24, 37, 30, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 250, 243, 0.78);
+}
+
+.auth-provider-callout p,
+.auth-provider-callout strong {
+    margin: 0;
+}
+
+.auth-provider-callout--warning {
+    background: rgba(217, 122, 66, 0.12);
+}
+
+.account-layout {
+    align-items: start;
+}
+
+.account-card {
+    gap: 1.5rem;
+}
+
+.account-card__hero {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+}
+
+.account-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+
+.comment-card {
+    gap: 1rem;
+}
+
+.comment-card__header {
+    gap: 0.85rem;
+    align-items: start;
+}
+
+.comment-card__author {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.comment-card__author p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.comment-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.comment-card__delete {
+    justify-self: start;
+}
+
 .checklist {
     display: grid;
     gap: 0.7rem;
@@ -831,6 +1029,16 @@ main {
     font-weight: 700;
 }
 
+.status-banner[data-tone="error"] {
+    background: rgba(176, 62, 46, 0.12);
+    color: #7f2e21;
+}
+
+.status-banner[data-tone="success"] {
+    background: rgba(58, 112, 86, 0.14);
+    color: #244b39;
+}
+
 .step-list {
     display: grid;
     gap: 0.9rem;
@@ -873,6 +1081,20 @@ main {
 
     .detail-content-grid {
         grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    }
+
+    .auth-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+        align-items: start;
+    }
+
+    .account-layout {
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    }
+
+    .comment-card__header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
     }
 }
 
@@ -925,6 +1147,19 @@ main {
         width: 100%;
     }
 
+    .site-header__actions,
+    .auth-shell {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .profile-menu,
+    .profile-menu__summary,
+    .auth-chip,
+    .auth-shell__signup {
+        width: 100%;
+    }
+
     .recipe-card__actions {
         justify-content: stretch;
     }
@@ -933,6 +1168,11 @@ main {
     .detail-media.recipe-card__media,
     .detail-media.recipe-card__media--placeholder {
         min-height: 260px;
+    }
+
+    .account-card__hero {
+        grid-template-columns: 1fr;
+        justify-items: start;
     }
 }
 

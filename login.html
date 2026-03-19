@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Log in to Forks & Freedom to save recipes, comment, and manage your account.">
+    <title>Forks & Freedom | Log In</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/config.js" defer></script>
+    <script src="javascript/auth.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell">
+        <section class="page-hero auth-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Account Access</span>
+                <h1>Log in to save recipes and join the conversation.</h1>
+                <p>Use your Forks & Freedom account or continue with Google if it is configured for the site.</p>
+            </article>
+        </section>
+
+        <section class="auth-layout">
+            <article class="detail-card auth-card">
+                <div class="detail-section-heading">
+                    <span class="pill">Log In</span>
+                    <h2>Welcome back</h2>
+                </div>
+                <p class="status-banner" data-auth-message="login" hidden></p>
+                <form class="form-grid" data-login-form>
+                    <div class="input-group">
+                        <label for="login-identifier">Email or username</label>
+                        <input id="login-identifier" name="identifier" type="text" placeholder="jordan@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input id="login-password" name="password" type="password" placeholder="Enter your password" required>
+                    </div>
+                    <button class="button" type="submit">Log In</button>
+                </form>
+                <div class="auth-divider"><span>or continue with</span></div>
+                <div data-google-login-button></div>
+                <div class="auth-footer-links">
+                    <a href="signup.html">Create an account</a>
+                    <a href="forgot-password.html">Forgot password?</a>
+                </div>
+            </article>
+
+            <article class="panel panel--dark">
+                <span class="pill">Why Sign In</span>
+                <h2 class="section-title">Keep your cooking workflow in one place.</h2>
+                <ul class="list-clean auth-benefits">
+                    <li>Save recipes to a personal shortlist.</li>
+                    <li>Comment on recipes and revisit your feedback later.</li>
+                    <li>Track your own submitted recipes from your account area.</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

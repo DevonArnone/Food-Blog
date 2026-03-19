@@ -4,18 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="View saved recipes on Forks & Freedom.">
-    <title>Forks & Freedom | Favorites</title>
+    <title>Forks & Freedom | Saved Recipes</title>
     <link rel="stylesheet" href="styles/site.css">
     <script src="javascript/site.js" defer></script>
+    <script src="javascript/config.js" defer></script>
+    <script src="javascript/auth.js" defer></script>
     <script src="javascript/recipe-data.js" defer></script>
     <script src="javascript/recipes-app.js" defer></script>
 </head>
 <body>
     <header data-site-header></header>
-    <main class="page-shell" data-favorites-page>
+    <main class="page-shell" data-favorites-page data-protected-page data-protected-title="Review your saved recipes" data-protected-message="Sign in to keep a personal shortlist of recipes you want to cook again.">
         <section class="page-hero">
             <article class="hero-copy">
-                <span class="eyebrow">Favorites</span>
+                <span class="eyebrow">Saved Recipes</span>
                 <h1>Keep your best ideas in one place.</h1>
                 <p>Saved recipes persist locally so you can shortlist meals for the week without losing track of them.</p>
                 <div class="button-row">
