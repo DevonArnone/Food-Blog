@@ -1,15 +1,29 @@
 # Forks & Freedom
 
-Forks & Freedom is a polished multi-page food blog built with HTML, CSS, and vanilla JavaScript. The project was upgraded from a basic static course site into a portfolio-quality product with a consistent design system, richer recipe data, improved recipe discovery, saved recipes, local recipe submission, a dashboard workflow, and a cleaner content architecture.
+Forks & Freedom is a portfolio-quality food blog built with HTML, CSS, and vanilla JavaScript. The project now combines a polished recipe experience with editorial blog content, local-first account flows, saved recipes, recipe comments, and a cleaner shared design system.
 
-## Project Overview
+## What Changed
 
-The site is designed to feel like a modern food and lifestyle product rather than a collection of disconnected static pages. The current version focuses on:
+The latest upgrade focused on four product areas:
 
-- A reusable shared shell with a consistent navbar, footer, typography, spacing, cards, and form styling
-- A richer recipe model with metadata, nutrition, dietary tags, and reusable detail rendering
-- Practical product flows such as favorites, search, categories, and local recipe submission
-- Cleaner maintainability through shared JavaScript data/rendering and removal of unused legacy assets
+- Recipe detail polish: responsive layouts, safer text wrapping, cleaner stat cards, and better use of desktop space
+- Auth and account flows: dedicated login, signup, forgot-password, and account pages with support for traditional auth plus optional Google sign-in
+- Saved recipes and comments: account-protected recipe saves, recipe-specific comment threads, and a more complete dashboard experience
+- Real blog experience: a blog landing page, post template, editorial post data, and homepage integration so the site feels like a real food/lifestyle brand
+
+## Core Features
+
+- Shared site shell with a responsive navbar, footer, reusable cards, and consistent spacing
+- Dynamic recipe library with categories, cuisine, difficulty, time, servings, dietary tags, and nutrition
+- Dynamic recipe detail route powered by `recipe.html?slug=...`
+- Account-aware saved recipes stored per user in `localStorage`
+- Account-protected recipe comments keyed by recipe slug
+- Traditional email/username plus password authentication
+- Optional Google sign-in flow when a valid client ID is configured
+- Account page for profile updates
+- Saved recipes page, dashboard page, and auth-aware navigation state
+- Editorial blog landing page and individual article template
+- Search, filtering, sorting, categories, local recipe submission, and custom `404.html`
 
 ## Screenshots
 
@@ -22,29 +36,16 @@ The site is designed to feel like a modern food and lifestyle product rather tha
 ### Recipe Detail
 ![Recipe detail page](docs/assets/images/recipe-detail-page.png)
 
-### My Recipes Dashboard
+### Dashboard
 ![Dashboard page](docs/assets/images/dashboard-page.png)
-
-## Key Features
-
-- Modern responsive UI with a single global design system
-- Structured recipe library with cuisine, difficulty, prep time, cook time, servings, and dietary tags
-- Search, category filtering, dietary tag filtering, and sorting on the recipes page
-- Featured, popular, and recent recipe sections
-- Dynamic recipe detail page with ingredients, instructions, nutrition, and related recipes
-- Favorites flow backed by `localStorage`
-- Recipe submission form with validation and local persistence
-- Dashboard page for viewing submitted recipes and saved activity
-- Categories page, search page, favorites page, and custom `404.html`
-- Legacy recipe URLs preserved through redirects to the new shared detail route
 
 ## Tech Stack
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- `localStorage` for saved recipes and submitted recipe persistence
-- Playwright for screenshot capture during the upgrade workflow
+- `localStorage` for account, saved recipe, comment, and submission persistence
+- Google Identity Services for optional Google sign-in
 
 ## Project Structure
 
@@ -53,16 +54,28 @@ Comp126/
 ├── index.html
 ├── recipes.html
 ├── recipe.html
+├── blog.html
+├── post.html
 ├── categories.html
 ├── favorites.html
 ├── submit.html
 ├── dashboard.html
+├── login.html
+├── signup.html
+├── forgot-password.html
+├── account.html
 ├── search.html
+├── about.html
+├── contact.html
 ├── 404.html
 ├── javascript/
+│   ├── config.js
 │   ├── site.js
+│   ├── auth.js
 │   ├── recipe-data.js
-│   └── recipes-app.js
+│   ├── recipes-app.js
+│   ├── blog-data.js
+│   └── blog-app.js
 ├── styles/
 │   └── site.css
 ├── Photos/
@@ -73,69 +86,68 @@ Comp126/
 
 ## Running Locally
 
-No package install or build step is required.
+No install step or build process is required.
 
-### Option 1: Python static server
+### Option 1
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Then open:
+Open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 
-```text
-http://127.0.0.1:4173/index.html
-```
+### Option 2
 
-### Option 2: VS Code Live Server
+Use VS Code Live Server from the repository root and open `index.html`.
 
-Serve the repository root and open `index.html`.
+## Auth Setup
 
-## Environment Variables
+Traditional login and signup work immediately with local browser storage.
 
-No environment variables are required for the current version of the project.
+Google sign-in is optional. To enable it:
 
-## Build And Deployment
+1. Create a Google OAuth client for a web application in Google Cloud Console.
+2. Open [`javascript/config.js`](/Users/devonarnone/Documents/GitHub/Comp126/javascript/config.js).
+3. Replace the empty `googleClientId` value with your real client ID.
+4. Serve the site locally and use the login or signup page to test the Google flow.
 
-This project is a static site, so deployment is straightforward:
+If `googleClientId` is left empty, the UI shows a graceful setup callout instead of a broken sign-in button.
 
-1. Push the repository to GitHub.
-2. Enable GitHub Pages from the repository settings.
-3. Set the published branch to the branch that contains the site files.
-4. Use the repository root as the publish source if deploying directly from this structure.
+## Persistence Model
 
-Because the app uses only static assets and client-side JavaScript, there is no backend deployment step in the current implementation.
+This is still a static site, so product state is stored locally in the browser:
+
+- Accounts are stored in `localStorage`
+- Saved recipes are stored per signed-in user
+- Recipe comments are stored per recipe slug
+- Submitted recipes are stored locally and tied to the current signed-in user
+
+Clearing browser storage resets that local state.
 
 ## Product Pages
 
-- `index.html`: landing page with featured content and product entry points
-- `recipes.html`: search, filters, sorting, featured/popular/recent sections
-- `recipe.html`: shared recipe detail route powered by query params
-- `categories.html`: browse by category
-- `favorites.html`: saved recipe collection
-- `submit.html`: recipe submission form
-- `dashboard.html`: local “My Recipes” dashboard
-- `search.html`: dedicated search results page
-- `about.html`: team and project context
-- `contact.html`: contact information and message form
-- `404.html`: custom not found page
+- `index.html`: homepage with recipes, brand positioning, and blog content
+- `recipes.html`: browse, filter, sort, and discover recipes
+- `recipe.html`: recipe detail page with saved state and comments
+- `blog.html`: editorial landing page
+- `post.html`: shared blog post template route
+- `favorites.html`: saved recipes for the signed-in user
+- `dashboard.html`: personal activity view for saved recipes, submissions, and comments
+- `submit.html`: account-protected recipe submission flow
+- `login.html`, `signup.html`, `forgot-password.html`, `account.html`: auth and account tools
 
-## Notes On Persistence
+## Deployment Notes
 
-Saved recipes and submitted recipes are stored in the browser with `localStorage`. That means:
+The project remains a static site and can be deployed with GitHub Pages or any static host.
 
-- Favorites persist across page refreshes in the same browser
-- Submitted recipes show up in the browse, search, favorites, and dashboard flows locally
-- Clearing browser storage will reset that state
+1. Push the repository to GitHub.
+2. Configure your static host or GitHub Pages to publish from the repository root.
+3. If you want Google sign-in in production, make sure the deployed domain is allowed in your Google OAuth configuration and update `javascript/config.js` before publishing.
 
 ## Future Improvements
 
-- Add a real backend and database for persistent user accounts and recipe submissions
-- Introduce image upload support for submitted recipes
-- Add pagination and richer analytics for popular recipe trends
-- Improve form feedback with inline validation states and success toasts
-- Add automated tests for filtering, search, favorites, and submission flows
-
-## Upgrade Summary
-
-This repository originally contained duplicated page-level styling, hardcoded recipe pages, minimal documentation, and layout issues that created an inconsistent browsing experience. The upgraded version consolidates styling and rendering patterns, fixes overflow problems, expands recipe functionality, and presents the project as a much stronger frontend engineering portfolio piece.
+- Replace local-first auth and persistence with a real backend and database
+- Add moderation controls or richer comment threading
+- Add image upload support for recipe submissions
+- Add automated UI regression checks for recipe detail, blog, and auth flows
+- Capture fresh screenshots for the new blog and auth pages
