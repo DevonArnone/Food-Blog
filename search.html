@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Search the Forks & Freedom recipe collection.">
+    <title>Forks & Freedom | Search</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell" data-search-page>
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Search</span>
+                <h1>Search across the entire recipe collection.</h1>
+                <p>Use a dedicated search results page when you want a focused view instead of browsing with filters.</p>
+            </article>
+        </section>
+        <section class="section">
+            <article class="panel">
+                <form class="form-grid" data-search-form>
+                    <div class="input-group">
+                        <label for="search-query">Search recipes</label>
+                        <input id="search-query" data-search-input type="search" placeholder="Try pasta, salmon, vegetarian, or dessert">
+                    </div>
+                    <button class="button" type="submit">Search</button>
+                </form>
+            </article>
+        </section>
+        <section class="section">
+            <div class="results-header">
+                <div>
+                    <span class="pill">Results</span>
+                    <h2 class="section-title">Search results</h2>
+                </div>
+                <p data-search-count></p>
+            </div>
+            <div class="recipe-grid" data-search-grid></div>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

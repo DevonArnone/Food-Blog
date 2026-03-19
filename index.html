@@ -1,82 +1,159 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <script src="javascript/responsive-nav.js"></script>
-    <link rel="stylesheet" href="styles/indexstyles.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Forks & Freedom is a modern food blog focused on approachable recipes, weeknight cooking, and stylish meal inspiration.">
+    <title>Forks & Freedom | Home</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-        </div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html" >Home</a></li>
-                    <li class="m-item"><a href="recipes.html" >Recipes</a></li>
-                    <li class="m-item"><a href="about.html" >About</a></li>
-                    <li class="m-item"><a href="contact.html" >Contact</a></li>  
-                </ul>
-            </nav>
-            <div id="auth-container"></div>
-        </div>
-    </header>
-    <main>
-        <div class = "welcome">
-            <h2>
-                Our Mission Statement
-            </h2>
-            <p class = "mission">
-                Our goal is to help single guys take charge of their kitchens with easy, efficient, and tasty recipes. Whether you’re just starting out or looking to simplify your routine, we’ve got practical tips and meals that are quick to make and even easier to enjoy. No waste, no mess, just great food that works for your life. Let’s make every meal a win.
-            </p>
-            <form action = "about.html" id = "learn_button"> 
-                <button class="button1">Learn More</button>
-            </form>
-        </div>
-    
+    <header data-site-header></header>
 
-        <div class="mailing">
-            <form>
-                    <h2>Subscribe to the Weekly Newsletter!</h2>
-                    <p class="para">You will receive a newsletter every week in your email.</p>
-                <label for="name">Your name</label>
-                <br>
-                <input type="text" id="name" name="name">
-                <br>
-                <label for="email">Email</label> 
-                <br>
-                <input type="email" id="email" name="email">
-                <br>
-                <button type="submit" class="color-transition">Submit</button>
-            </form>
-        </div>
+    <main class="page-shell">
+        <section class="page-hero page-hero--split">
+            <article class="hero-copy">
+                <span class="eyebrow">Kitchen Confidence Starts Here</span>
+                <h1>Cook polished, flavorful meals without turning dinner into a project.</h1>
+                <p>
+                    Forks & Freedom is built for home cooks who want stronger weeknight habits, sharper recipe guidance,
+                    and a food blog that feels equal parts inspiring and practical.
+                </p>
+                <div class="hero-actions">
+                    <a class="button" href="recipes.html">Browse Recipes</a>
+                    <a class="button-secondary" href="categories.html">Browse Categories</a>
+                    <a class="button-secondary" href="submit.html">Submit a Recipe</a>
+                </div>
+            </article>
+
+            <div class="hero-image">
+                <img src="Photos/Steak_Hasselback.webp" alt="Steak with hasselback potatoes plated for dinner.">
+            </div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Why Readers Stay</span>
+                <h2 class="section-title">A cleaner recipe experience built around real cooking decisions.</h2>
+                <p class="section-subtitle">
+                    The site now leans into structure: clear recipe context, balanced layouts, stronger calls to action,
+                    and a visual system that keeps every page connected.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <article class="stats-card">
+                    <strong>30 min</strong>
+                    <p>Average target for weeknight mains and fast-prep favorites.</p>
+                </article>
+                <article class="stats-card">
+                    <strong>4 Core</strong>
+                    <p>Recipe pillars: comfort food, date-night dinners, sweets, and crowd-pleasers.</p>
+                </article>
+                <article class="stats-card">
+                    <strong>Mobile First</strong>
+                    <p>Responsive page shells, readable forms, and polished card layouts across breakpoints.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="two-column">
+            <article class="panel panel--dark">
+                <span class="pill">Mission</span>
+                <h2 class="section-title">Make home cooking feel capable, not chaotic.</h2>
+                <p>
+                    Our goal is to reduce friction. That means recipes with clear pacing, ingredient lists you can scan
+                    quickly, and enough context to help you decide what to cook before you even preheat the oven.
+                </p>
+                <p>
+                    Whether you are feeding yourself after work or planning a low-effort weekend dinner, the product should
+                    feel calm, modern, and worth returning to.
+                </p>
+            </article>
+
+            <article class="panel">
+                <span class="pill">Newsletter</span>
+                <h2 class="section-title">Get one smart recipe roundup each week.</h2>
+                <p>
+                    Subscribe for seasonal inspiration, hosting ideas, and a rotating mix of reliable mains, sides, and desserts.
+                </p>
+                <form class="form-grid">
+                    <div class="input-group">
+                        <label for="newsletter-name">Your name</label>
+                        <input id="newsletter-name" name="newsletter-name" type="text" placeholder="Jordan Lee">
+                    </div>
+                    <div class="input-group">
+                        <label for="newsletter-email">Email</label>
+                        <input id="newsletter-email" name="newsletter-email" type="email" placeholder="jordan@example.com">
+                    </div>
+                    <button class="button" type="submit">Join the Newsletter</button>
+                    <p class="fine-print">No spam. Just a better dinner plan.</p>
+                </form>
+            </article>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Featured Right Now</span>
+                <h2 class="section-title">Start with a small, polished set of craveable favorites.</h2>
+            </div>
+            <div class="recipe-grid">
+                <a class="recipe-card" href="recipe.html?slug=steak-hasselback">
+                    <img src="Photos/Steak_Hasselback.webp" alt="Steak and hasselback potatoes.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Date Night</span>
+                            <span class="tag">45 min</span>
+                        </div>
+                        <h3>Steak and Hasselback Potatoes</h3>
+                        <p>Classic steakhouse energy with a crisp-edged potato side that looks harder than it is.</p>
+                    </div>
+                </a>
+                <a class="recipe-card" href="recipe.html?slug=american-cheeseburger">
+                    <img src="Photos/burger.jpg" alt="American cheeseburger on a toasted bun.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Comfort Food</span>
+                            <span class="tag">30 min</span>
+                        </div>
+                        <h3>American Cheeseburger</h3>
+                        <p>A straightforward burger recipe with clean seasoning and the kind of texture you actually want.</p>
+                    </div>
+                </a>
+                <a class="recipe-card" href="recipe.html?slug=apple-crisp">
+                    <img src="Photos/Apple-Crisp-197.jpg" alt="Apple crisp with vanilla ice cream.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Dessert</span>
+                            <span class="tag">60 min</span>
+                        </div>
+                        <h3>Apple Crisp</h3>
+                        <p>Warm fruit, browned topping, and just enough structure to hold up next to a scoop of ice cream.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="two-column">
+            <article class="panel">
+                <span class="pill">Saved Recipes</span>
+                <h2 class="section-title">Build a personal shortlist.</h2>
+                <p>Use the new save action across recipe cards and detail pages, then revisit your favorites from one dedicated page.</p>
+                <div class="button-row">
+                    <a class="button-secondary" href="favorites.html">Open Favorites</a>
+                </div>
+            </article>
+            <article class="panel">
+                <span class="pill">Creator Workflow</span>
+                <h2 class="section-title">Add your own recipe ideas.</h2>
+                <p>Submit recipes through a validated form and track them from the new dashboard-style “My Recipes” page.</p>
+                <div class="button-row">
+                    <a class="button-secondary" href="dashboard.html">View Dashboard</a>
+                </div>
+            </article>
+        </section>
     </main>
 
-    <div class="pictures">
-        <div class="column" id="first"></div>
-        <div class="column" id="second"></div>
-        <div class="column" id="third"></div>
-    </div>
-
-<footer>
-    <p>&copy; Forks&Freedom</p>
-</footer>
-
-<script src="javascript/fastclick.js"></script>
-<script src="javascript/scroll.js"></script>
-<script src="javascript/fixed-responsive-nav.js"></script>
-<script src="javascript/responsive-nav.js"></script>
-<script src="javascript/auth.js"></script>
-
+    <footer data-site-footer></footer>
 </body>
 </html>

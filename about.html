@@ -1,69 +1,70 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <script src="javascript/responsive-nav.js"></script>
-    <link rel="stylesheet" href="styles/header.css">
-    <link href="styles/aboutstyle.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn about the creators behind Forks & Freedom and the mission of the food blog.">
+    <title>Forks & Freedom | About</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="logo"></div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html">Home</a></li>
-                    <li class="m-item"><a href="recipes.html">Recipes</a></li>
-                    <li class="m-item"><a href="about.html">About</a></li>
-                    <li class="m-item"><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div id="auth-container"></div>
-        </div>
-    </header>
+    <header data-site-header></header>
 
-    <main>
-        <div class="main_section">
-            <div class="top_section">
-                <h3>Our Authors</h3>
+    <main class="page-shell">
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">About The Team</span>
+                <h1>A collaborative food blog built to make cooking feel approachable and worth sharing.</h1>
+                <p>
+                    Forks & Freedom started as a practical idea: create an easier on-ramp for people who want better meals
+                    without needing professional technique or a huge ingredient list.
+                </p>
+            </article>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Our Perspective</span>
+                <h2 class="section-title">Real recipes, clearer guidance, and less guesswork.</h2>
+                <p class="section-subtitle">
+                    The team brings different motivations to the same goal: helping readers cook with more confidence,
+                    spend less on takeout, and keep their meal choices practical.
+                </p>
             </div>
-            <div class = "main_row_section">
-                <div class="section_1">
-                    <img src="Photos/Thomas Spiese Picture.JPEG" alt="Picture of Thomas Spiese">
-                    <p>Thomas Spiese: I made this website because lots of single men don't know how to cook or where to start. This website offers a place, just for men, to learn how to cook to help them with their fitness, wallet, and health.</p>
-                </div>
-                <div class="section_2">
-                    <img src="Photos/Devon.JPG" alt="Picture of Devon">
-                    <p>Devon Arnone: I created this website to make cooking approachable and enjoyable for everyone, regardless of experience. Whether you're just starting your culinary journey or looking to expand your skills, this is your go-to resource for learning how to prepare delicious meals.</p>
-                </div>
-                <div class="section_3">
-                    <img src="Photos/WIN_20220805_14_15_20_Pro.jpg" alt="Picture of Miguel Magana Melendez">
-                    <p>Miguel Magana: The idea behind creating this website is to help out guys who don't know how to cook. Sometimes its just tough to figure out what to cook for the night and what better place to figure that out than this website!</p>
-                </div>
-                <div class="section_4">
-                    <img src="Photos/IMG_1424.JPG" alt="Picture of Joshua Garay">
-                    <p>Joshua Garay: I created this website because I was searching for a resource like this myself. I wanted a straightforward, fun way to learn cooking techniques, plan meals, and discover recipes that suit my lifestyle. When I couldn't find exactly what I needed, I decided to build it instead—for myself and anyone else in the same boat!</p>
-                </div>
+            <div class="about-grid">
+                <article class="person-card">
+                    <img src="Photos/Thomas Spiese Picture.JPEG" alt="Portrait of Thomas Spiese.">
+                    <div class="person-card__body">
+                        <h3>Thomas Spiese</h3>
+                        <p>Thomas helped ground the project in practicality, focusing on recipes that support health, budget, and everyday consistency.</p>
+                    </div>
+                </article>
+                <article class="person-card">
+                    <img src="Photos/Devon.JPG" alt="Portrait of Devon Arnone.">
+                    <div class="person-card__body">
+                        <h3>Devon Arnone</h3>
+                        <p>Devon pushed the product toward a more inclusive and polished cooking resource that feels useful whether you are brand new or already comfortable in the kitchen.</p>
+                    </div>
+                </article>
+                <article class="person-card">
+                    <img src="Photos/WIN_20220805_14_15_20_Pro.jpg" alt="Portrait of Miguel Magana.">
+                    <div class="person-card__body">
+                        <h3>Miguel Magana</h3>
+                        <p>Miguel kept the experience grounded in the real question many readers have every day: what should I actually cook tonight?</p>
+                    </div>
+                </article>
+                <article class="person-card">
+                    <img src="Photos/IMG_1424.JPG" alt="Portrait of Joshua Garay.">
+                    <div class="person-card__body">
+                        <h3>Joshua Garay</h3>
+                        <p>Joshua emphasized a straightforward learning experience with recipes, meal planning ideas, and techniques that do not feel intimidating.</p>
+                    </div>
+                </article>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; Forks&Freedom</p>
-    </footer>
-    <script src="javascript/fastclick.js"></script>
-    <script src="javascript/scroll.js"></script>
-    <script src="javascript/fixed-responsive-nav.js"></script>
-    <script src="javascript/responsive-nav.js"></script>
-    <script src="javascript/auth.js"></script>
+    <footer data-site-footer></footer>
 </body>
-
 </html>

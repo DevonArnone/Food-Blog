@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="View saved recipes on Forks & Freedom.">
+    <title>Forks & Freedom | Favorites</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell" data-favorites-page>
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Favorites</span>
+                <h1>Keep your best ideas in one place.</h1>
+                <p>Saved recipes persist locally so you can shortlist meals for the week without losing track of them.</p>
+                <div class="button-row">
+                    <a class="button-secondary" href="recipes.html">Browse More Recipes</a>
+                </div>
+            </article>
+        </section>
+        <section class="section">
+            <div class="results-header">
+                <div>
+                    <span class="pill">Saved Collection</span>
+                    <h2 class="section-title">Your saved recipes</h2>
+                </div>
+                <p data-favorites-count></p>
+            </div>
+            <div class="recipe-grid" data-favorites-grid></div>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

@@ -1,67 +1,111 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <script src="javascript/responsive-nav.js"></script>
-    <link rel="stylesheet" href="styles/header.css">
-    <link href="styles/recipesstyles.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse recipe ideas from Forks & Freedom, including comfort food, desserts, and weeknight dinners.">
+    <title>Forks & Freedom | Recipes</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="logo"></div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html">Home</a></li>
-                    <li class="m-item"><a href="recipes.html">Recipes</a></li>
-                    <li class="m-item"><a href="about.html">About</a></li>
-                    <li class="m-item"><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div id="auth-container"></div>
-        </div>
-    </header>
+    <header data-site-header></header>
 
-    <div class="main_section">
-        <div class="top_section">
-            <h3>Our Recipes</h3>
-        </div>
+    <main class="page-shell" data-recipes-page>
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Recipe Discovery</span>
+                <h1>Search, sort, and filter a richer cooking library.</h1>
+                <p>
+                    The browse experience now runs off shared recipe data, which means the collection can scale without
+                    duplicating detail pages or hardcoding every card by hand.
+                </p>
+            </article>
+        </section>
 
-        <div class="section">
-            <a href="TS1.html">
-                <img src="Photos/Steak_Hasselback.webp" alt="A Clickable Image of a steak hasselback dinner." class="recipe_img">
-            </a>
-    
-            <a href="burger.html">
-                <img src="Photos/burger.jpg" alt="A clickable photo of a cheeseburger." class="recipe_img">
-            </a>
-    
-            <a href="applecrisp.html">
-                <img src="Photos/Apple-Crisp-197.jpg" alt="A clickable photo of an Apple Crisp Dessert made of apples, cinnamon, oats, and brown sugar served with ice cream." class="recipe_img">
-            </a>
-            <a href="JG1.html">
-                <img src="Photos/cheestesteak.jpg" alt="A clickable photo of a philly cheesesteak." class="recipe_img">
-            </a>
-        </div>
-    </div>    
+        <section class="section">
+            <div>
+                <span class="pill">Browse Controls</span>
+                <h2 class="section-title">Find a recipe based on time, difficulty, or dietary preference.</h2>
+            </div>
+            <article class="panel toolbar-card">
+                <div class="filters-grid">
+                    <div class="input-group">
+                        <label for="recipe-search">Search</label>
+                        <input id="recipe-search" data-filter-search type="search" placeholder="Search by title, cuisine, or tag">
+                    </div>
+                    <div class="input-group">
+                        <label for="recipe-category">Category</label>
+                        <select id="recipe-category" data-filter-category></select>
+                    </div>
+                    <div class="input-group">
+                        <label for="recipe-difficulty">Difficulty</label>
+                        <select id="recipe-difficulty" data-filter-difficulty></select>
+                    </div>
+                    <div class="input-group">
+                        <label for="recipe-sort">Sort</label>
+                        <select id="recipe-sort" data-filter-sort>
+                            <option value="featured">Featured first</option>
+                            <option value="popular">Most popular</option>
+                            <option value="newest">Newest</option>
+                            <option value="quickest">Quickest</option>
+                            <option value="title">A to Z</option>
+                        </select>
+                    </div>
+                </div>
 
-    <footer>
-        <p>&copy; Forks&Freedom</p>
-    </footer>
+                <div class="input-group">
+                    <label>Dietary tags</label>
+                    <div class="chip-row" data-filter-tags></div>
+                </div>
 
-    <script src="javascript/fastclick.js"></script>
-    <script src="javascript/scroll.js"></script>
-    <script src="javascript/fixed-responsive-nav.js"></script>
-    <script src="javascript/responsive-nav.js"></script>
-    <script src="javascript/auth.js"></script>
+                <div class="button-row">
+                    <button class="button-secondary" type="button" data-filter-clear>Clear filters</button>
+                </div>
+            </article>
+        </section>
+
+        <section class="section">
+            <div class="results-header">
+                <div>
+                    <span class="pill">Results</span>
+                    <h2 class="section-title">Browse all recipes</h2>
+                </div>
+                <p data-results-count></p>
+            </div>
+            <div class="recipe-grid" data-results-grid></div>
+            <div class="empty-state" data-results-empty hidden>
+                No recipes matched those filters. Try broadening the search or clearing one of the active filters.
+            </div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Highlights</span>
+                <h2 class="section-title">Featured picks</h2>
+            </div>
+            <div class="recipe-grid" data-featured-grid></div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Popular</span>
+                <h2 class="section-title">Most popular right now</h2>
+            </div>
+            <div class="recipe-grid" data-popular-grid></div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Recent</span>
+                <h2 class="section-title">Recently added</h2>
+            </div>
+            <div class="recipe-grid" data-recent-grid></div>
+        </section>
+    </main>
+
+    <footer data-site-footer></footer>
 </body>
-
 </html>

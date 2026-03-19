@@ -1,133 +1,64 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <link href="styles/indexstyles.css" rel="stylesheet">
-    <link href="styles/contactstyle.css" rel="stylesheet">
-    <script src="javascript/responsive-nav.js"></script>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/auth.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
-
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contact Forks & Freedom for recipe requests, collaboration ideas, and reader feedback.">
+    <title>Forks & Freedom | Contact</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-        </div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html" >Home</a></li>
-                    <li class="m-item"><a href="recipes.html" >Recipes</a></li>
-                    <li class="m-item"><a href="about.html" >About</a></li>
-                    <li class="m-item"><a href="contact.html" >Contact</a></li>  
-                </ul>
-            </nav>
-            <div id="auth-container"></div>
-        </div>
-    </header>
+    <header data-site-header></header>
 
+    <main class="page-shell">
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Contact</span>
+                <h1>Send recipe ideas, reader feedback, or collaboration notes.</h1>
+                <p>
+                    Keep it simple: ask a question, suggest a recipe direction, or reach out about creative partnership opportunities.
+                </p>
+            </article>
+        </section>
 
+        <section class="contact-grid">
+            <article class="contact-card">
+                <div class="contact-card__body">
+                    <span class="pill">Reach Us</span>
+                    <h3>Contact details</h3>
+                    <ul class="list-clean">
+                        <li><strong>Phone:</strong> 919-345-6789</li>
+                        <li><strong>Email:</strong> forksfreedom@gmail.com</li>
+                        <li><strong>Instagram:</strong> @forksandfreedom</li>
+                        <li><strong>Facebook:</strong> Forks & Freedom</li>
+                    </ul>
+                    <p>We are most responsive to email for recipe requests, feature ideas, and collaboration inquiries.</p>
+                </div>
+            </article>
 
-<main>
-    <div class = "welcome">
-        <br>
-        ------------------------------------------------
-        <br>
-        <h1 class="h1-texter">
-            Contact Us with any questions.
-        </h1>
-        <br>
-        ------------------------------------------------
-        <br>
-        <br>
-        <p>
-            If you feel inclined to contact us, here are different ways to do so:
-        </p>
-        <br>
-        <br>
-        <br>
-        ------------------------------------------------
-        <br>
-        <br>
-        <br>
-        <p>
-            <strong>Phone: 919-345-6789</strong>
-        </p>
-        <br>
-        <br>
-        <p>
-            <strong>Fax: 919-345-6789</strong>
-        </p>
-        <br>
-        <br>
-        <p>
-            <strong>Email: forksfreedom@gmail.com</strong>
-        </p>
-        <br>
-        <br>
-        <br>
-        ------------------------------------------------
-        <br>
-        <br>
-        <p>
-            <strong>Social Media</strong>
-        </p>
-        <br>
-        <p>
-            Instagram: @forks&freedom
-        </p>
-        <br>
-        <p>
-            Facebook: Forks&Freedom
-        </p>
-    </div>
+            <article class="panel">
+                <span class="pill">Message Us</span>
+                <h2 class="section-title">Tell us what you want to cook next.</h2>
+                <form class="form-grid">
+                    <div class="input-group">
+                        <label for="contact-name">Your name</label>
+                        <input id="contact-name" name="contact-name" type="text" placeholder="Taylor Morgan">
+                    </div>
+                    <div class="input-group">
+                        <label for="contact-email">Email address</label>
+                        <input id="contact-email" name="contact-email" type="email" placeholder="taylor@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="contact-message" placeholder="I would love more high-protein weeknight meals..."></textarea>
+                    </div>
+                    <button class="button" type="submit">Send Message</button>
+                </form>
+            </article>
+        </section>
+    </main>
 
-    
-
-    <div class="welcome-image">
-        <img src="Photos/Logo.png" alt="Logo image.">
-    </div>
-</main>
-
-<div class="form-box">
-    <div>
-        <form>
-            <h2 class="formtitle">
-                Leave contact info below!
-            </h2>
-        <label for="name">Your Name</label>
-        <br>
-        <input type="text" id="name" name="name">
-        <br>
-        <label for="e-mail">E-mail</label>
-        <br>
-        <input type="email" id="email" name="email">     
-        <br>
-        <label for="subject">Message</label>
-        <br>
-        <input type="subject" id="subject" name="subject" placeholder="Write something.."></input>
-        <br>
-        <button type="submit" class="color-transition">Submit</button>  
-        </form>
-    </div>
-</div>
-
-<footer>
-    <p>&copy; Forks&Freedom</p>
-</footer>
-
-<script src="javascript/fastclick.js"></script>
-<script src="javascript/scroll.js"></script>
-<script src="javascript/fixed-responsive-nav.js"></script>
-<script src="javascript/responsive-nav.js"></script>
-<script src="javascript/auth.js"></script>
-
+    <footer data-site-footer></footer>
 </body>
 </html>
