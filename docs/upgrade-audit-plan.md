@@ -68,3 +68,60 @@
 ### Phase 7
 - Rewrite the README with a polished overview, feature list, tech stack, local setup, project structure, screenshots, and future roadmap.
 - Save screenshots under `docs/assets/images`.
+
+## 2026-03-18 Follow-Up Audit: Recipe Detail, Auth, And Blog Experience
+
+### Current Active Pages
+- `index.html`: marketing-style homepage
+- `recipes.html`: dynamic recipe browse page
+- `recipe.html`: shared recipe detail route powered by `slug` query params
+- `categories.html`, `favorites.html`, `submit.html`, `dashboard.html`, `search.html`, `404.html`
+- Legacy detail routes (`TS1.html`, `burger.html`, `applecrisp.html`, `JG1.html`) currently redirect into `recipe.html`
+
+### Current Styling And Layout System
+- The active experience uses `styles/site.css` with a reusable shell injected by `javascript/site.js`.
+- The design system is broadly consistent, but some older auth and comment styles live in separate legacy files: `styles/auth.css` and `styles/comments.css`.
+- The auth and comment styles are not currently loaded by the active pages, so they are effectively detached from the live product.
+
+### Recipe Detail Structure
+- `recipe.html` renders a shared detail shell.
+- `javascript/recipes-app.js` injects the detail layout, stat cards, nutrition cards, and related recipes at runtime.
+- The detail page is driven by `window.RECIPES` plus locally submitted recipes stored in `localStorage`.
+
+### Recipe Detail Layout Problems
+- The detail layout uses a narrow sidebar on desktop: `grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr)`.
+- Inside that sidebar, the stat cards use `repeat(auto-fit, minmax(180px, 1fr))`, which is too rigid for narrow columns and leads to awkward stacking and card crowding.
+- The detail image wrapper uses the same padded `detail-card` treatment as text cards, which creates excessive whitespace and inconsistent visual rhythm, especially for placeholder media.
+- Several headings and card values rely on large display typography without extra guardrails like `overflow-wrap`, tighter line-height control, or narrower responsive steps.
+- The current page has no integrated comment block, so there is no way to validate layout harmony between detail content and comments in the live route.
+
+### Auth Implementation Status
+- `javascript/auth.js` contains a localStorage-backed auth manager with register/login modal behavior.
+- Google SSO is not functioning in the live implementation:
+  - the script loader exists,
+  - the configured client ID is still `YOUR_GOOGLE_CLIENT_ID`,
+  - `handleGoogleSSOClick()` currently shows an alert that SSO is unavailable instead of starting a real sign-in flow.
+- Traditional auth exists only as a modal implementation; there are no dedicated login, signup, account, or forgot-password pages in the active app.
+- The active site shell in `javascript/site.js` does not render `#auth-container` at all, so the auth manager never has a mount point even if the script is loaded.
+
+### Save And Comment Modeling Status
+- Saved recipes are currently anonymous and not auth-protected:
+  - favorites are stored directly in `localStorage` under `forks-freedom-favorites`
+  - any visitor can save recipes without signing in
+- Submitted recipes are also stored locally under `forks-freedom-submissions`.
+- `javascript/comments.js` exists but is not wired into the active detail route.
+- If comments were turned on without adjustment, they would be incorrectly keyed:
+  - comment storage uses the current pathname (`recipe`) rather than the `slug` query param
+  - that would collapse comments from every dynamic recipe into one shared thread
+
+### Blog Experience Status
+- The site still behaves more like a recipe product than a full food blog.
+- There is no blog landing page, no post template, no editorial navigation path, and no post data model.
+- Homepage copy is strong, but it does not yet branch into a story-driven or editorial content experience.
+
+### Most Important Fixes To Make Next
+- Rebuild the recipe detail layout so stat cards, hero metadata, image/media blocks, and text content stay balanced across desktop, tablet, and mobile.
+- Integrate auth into the actual site shell and restore realistic Google + email/password entry points.
+- Gate save/comment actions behind auth and use per-user local persistence where no backend exists.
+- Add a comment section to the active detail route, keyed by recipe slug instead of pathname.
+- Add blog landing and blog post pages so the product reads as a real food blog rather than only a recipe browser.
