@@ -364,7 +364,9 @@ main {
 }
 
 .hero-image,
-.card-image {
+.card-image,
+.recipe-card__media,
+.detail-media {
     overflow: hidden;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
@@ -374,7 +376,9 @@ main {
 .hero-image img,
 .card-image img,
 .recipe-card img,
-.person-card img {
+.person-card img,
+.recipe-card__media img,
+.detail-media img {
     height: 100%;
     object-fit: cover;
 }
@@ -445,6 +449,42 @@ main {
 .recipe-card img,
 .person-card img {
     aspect-ratio: 4 / 3;
+}
+
+.recipe-card__media--placeholder {
+    display: grid;
+    place-items: end start;
+    min-height: 320px;
+    padding: 1.4rem;
+    color: var(--text-on-dark);
+}
+
+.recipe-card__media--charcoal {
+    background: linear-gradient(135deg, #10211d, #33544b);
+}
+
+.recipe-card__media--amber {
+    background: linear-gradient(135deg, #8b421f, #dc8c58);
+}
+
+.recipe-card__media--berry {
+    background: linear-gradient(135deg, #5f2b39, #b96952);
+}
+
+.recipe-card__media--sage {
+    background: linear-gradient(135deg, #34554e, #7ca08b);
+}
+
+.placeholder-copy {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 18rem;
+}
+
+.placeholder-copy strong {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 2rem;
+    line-height: 1.05;
 }
 
 .recipe-card__body,
@@ -536,6 +576,52 @@ main {
     gap: 1rem;
 }
 
+.toolbar-card {
+    padding: 1.4rem;
+}
+
+.filters-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.filter-chip {
+    min-height: 42px;
+    padding: 0.65rem 0.95rem;
+    border: 1px solid rgba(24, 37, 30, 0.14);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 253, 250, 0.94);
+    color: var(--text);
+    font-weight: 700;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible,
+.filter-chip--active {
+    border-color: rgba(217, 122, 66, 0.6);
+    box-shadow: 0 0 0 4px rgba(217, 122, 66, 0.14);
+    transform: translateY(-1px);
+}
+
+.results-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.results-header p {
+    margin: 0;
+}
+
 .input-group {
     display: grid;
     gap: 0.45rem;
@@ -593,6 +679,16 @@ main {
     color: var(--text-muted);
 }
 
+.step-list {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.step-list li::marker {
+    font-weight: 800;
+    color: var(--accent-dark);
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -612,6 +708,11 @@ main {
     .contact-grid,
     .about-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filters-grid {
+        grid-template-columns: 1.2fr repeat(3, minmax(0, 0.6fr));
+        align-items: end;
     }
 
     .detail-layout {

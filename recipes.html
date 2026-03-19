@@ -7,76 +7,102 @@
     <title>Forks & Freedom | Recipes</title>
     <link rel="stylesheet" href="styles/site.css">
     <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
 </head>
 <body>
     <header data-site-header></header>
 
-    <main class="page-shell">
+    <main class="page-shell" data-recipes-page>
         <section class="page-hero">
             <article class="hero-copy">
-                <span class="eyebrow">Recipe Collection</span>
-                <h1>Browse a sharper, more polished home-cooking library.</h1>
+                <span class="eyebrow">Recipe Discovery</span>
+                <h1>Search, sort, and filter a richer cooking library.</h1>
                 <p>
-                    This page is the foundation for richer discovery in the next phase: stronger cards, clearer metadata,
-                    and a structure that can scale beyond a handful of recipes without falling apart visually.
+                    The browse experience now runs off shared recipe data, which means the collection can scale without
+                    duplicating detail pages or hardcoding every card by hand.
                 </p>
             </article>
         </section>
 
         <section class="section">
             <div>
-                <span class="pill">Curated Selection</span>
-                <h2 class="section-title">Current featured recipes</h2>
-                <p class="section-subtitle">
-                    Each card now shares the same visual treatment, spacing, and scan pattern so the entire collection feels cohesive.
-                </p>
+                <span class="pill">Browse Controls</span>
+                <h2 class="section-title">Find a recipe based on time, difficulty, or dietary preference.</h2>
             </div>
-            <div class="recipe-grid">
-                <a class="recipe-card" href="TS1.html">
-                    <img src="Photos/Steak_Hasselback.webp" alt="Steak with hasselback potatoes.">
-                    <div class="recipe-card__body">
-                        <div class="recipe-card__meta">
-                            <span class="tag">Dinner</span>
-                            <span class="tag">Beginner+</span>
-                        </div>
-                        <h3>Steak and Hasselback Potatoes</h3>
-                        <p>Elegant comfort food with crisp potatoes and a steakhouse-style plating payoff.</p>
+            <article class="panel toolbar-card">
+                <div class="filters-grid">
+                    <div class="input-group">
+                        <label for="recipe-search">Search</label>
+                        <input id="recipe-search" data-filter-search type="search" placeholder="Search by title, cuisine, or tag">
                     </div>
-                </a>
-                <a class="recipe-card" href="burger.html">
-                    <img src="Photos/burger.jpg" alt="Classic cheeseburger.">
-                    <div class="recipe-card__body">
-                        <div class="recipe-card__meta">
-                            <span class="tag">Comfort</span>
-                            <span class="tag">30 min</span>
-                        </div>
-                        <h3>American Cheeseburger</h3>
-                        <p>Juicy patties, toasted buns, and a flexible topping setup that suits weeknights or weekends.</p>
+                    <div class="input-group">
+                        <label for="recipe-category">Category</label>
+                        <select id="recipe-category" data-filter-category></select>
                     </div>
-                </a>
-                <a class="recipe-card" href="applecrisp.html">
-                    <img src="Photos/Apple-Crisp-197.jpg" alt="Apple crisp dessert.">
-                    <div class="recipe-card__body">
-                        <div class="recipe-card__meta">
-                            <span class="tag">Dessert</span>
-                            <span class="tag">Family Style</span>
-                        </div>
-                        <h3>Apple Crisp</h3>
-                        <p>A warm, nostalgic dessert with a crisp topping and vanilla-ice-cream potential built in.</p>
+                    <div class="input-group">
+                        <label for="recipe-difficulty">Difficulty</label>
+                        <select id="recipe-difficulty" data-filter-difficulty></select>
                     </div>
-                </a>
-                <a class="recipe-card" href="JG1.html">
-                    <img src="Photos/cheestesteak.jpg" alt="Philly cheesesteak sandwich.">
-                    <div class="recipe-card__body">
-                        <div class="recipe-card__meta">
-                            <span class="tag">Game Day</span>
-                            <span class="tag">Skillet</span>
-                        </div>
-                        <h3>Philly Cheesesteak</h3>
-                        <p>Thin-sliced steak, peppers, onions, and melted cheese packed into a broiled roll.</p>
+                    <div class="input-group">
+                        <label for="recipe-sort">Sort</label>
+                        <select id="recipe-sort" data-filter-sort>
+                            <option value="featured">Featured first</option>
+                            <option value="popular">Most popular</option>
+                            <option value="newest">Newest</option>
+                            <option value="quickest">Quickest</option>
+                            <option value="title">A to Z</option>
+                        </select>
                     </div>
-                </a>
+                </div>
+
+                <div class="input-group">
+                    <label>Dietary tags</label>
+                    <div class="chip-row" data-filter-tags></div>
+                </div>
+
+                <div class="button-row">
+                    <button class="button-secondary" type="button" data-filter-clear>Clear filters</button>
+                </div>
+            </article>
+        </section>
+
+        <section class="section">
+            <div class="results-header">
+                <div>
+                    <span class="pill">Results</span>
+                    <h2 class="section-title">Browse all recipes</h2>
+                </div>
+                <p data-results-count></p>
             </div>
+            <div class="recipe-grid" data-results-grid></div>
+            <div class="empty-state" data-results-empty hidden>
+                No recipes matched those filters. Try broadening the search or clearing one of the active filters.
+            </div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Highlights</span>
+                <h2 class="section-title">Featured picks</h2>
+            </div>
+            <div class="recipe-grid" data-featured-grid></div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Popular</span>
+                <h2 class="section-title">Most popular right now</h2>
+            </div>
+            <div class="recipe-grid" data-popular-grid></div>
+        </section>
+
+        <section class="section">
+            <div>
+                <span class="pill">Recent</span>
+                <h2 class="section-title">Recently added</h2>
+            </div>
+            <div class="recipe-grid" data-recent-grid></div>
         </section>
     </main>
 
