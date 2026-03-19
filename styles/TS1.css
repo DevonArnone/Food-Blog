@@ -14,7 +14,7 @@ footer {
 main{
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 0;
     grid-template-columns: 50f 50f;
     grid-template-rows: 50f 50f;
 }

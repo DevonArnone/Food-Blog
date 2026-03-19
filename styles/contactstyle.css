@@ -108,7 +108,7 @@ h2{
 main{
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 0;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
 }

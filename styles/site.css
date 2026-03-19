@@ -39,6 +39,7 @@ body {
     min-height: 100svh;
     display: flex;
     flex-direction: column;
+    overflow-x: clip;
     font-family: "Manrope", "Segoe UI", sans-serif;
     color: var(--text);
     background:
@@ -71,6 +72,7 @@ button {
 
 main {
     flex: 1;
+    min-width: 0;
 }
 
 .site-header {
@@ -270,6 +272,7 @@ main {
 .contact-card,
 .detail-card,
 .stats-card {
+    min-width: 0;
     background: linear-gradient(180deg, rgba(255, 253, 250, 0.94), rgba(255, 250, 243, 0.92));
     border: 1px solid rgba(24, 37, 30, 0.08);
     border-radius: var(--radius-lg);
