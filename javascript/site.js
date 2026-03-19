@@ -13,6 +13,18 @@ function currentPageName() {
   return path || "index.html";
 }
 
+function navMatchPage(page) {
+  const aliases = {
+    "post.html": "blog.html",
+    "login.html": "",
+    "signup.html": "",
+    "forgot-password.html": "",
+    "account.html": ""
+  };
+
+  return aliases[page] ?? page;
+}
+
 function injectSiteHeader() {
   const header = document.querySelector("[data-site-header]");
   if (!header) {
@@ -20,11 +32,12 @@ function injectSiteHeader() {
   }
 
   const page = currentPageName();
+  const activePage = navMatchPage(page);
   const linksMarkup = navLinks
     .map((link) => {
       const isCurrent =
-        link.href === page ||
-        (page === "" && link.href === "index.html");
+        link.href === activePage ||
+        (activePage === "" && link.href === "index.html");
       const current = isCurrent ? ' aria-current="page"' : "";
       return `<li><a class="site-nav__link" href="${link.href}"${current}>${link.label}</a></li>`;
     })

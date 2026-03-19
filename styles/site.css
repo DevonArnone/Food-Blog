@@ -534,15 +534,55 @@ main {
 }
 
 .feature-grid,
-.recipe-grid {
+.recipe-grid,
+.blog-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .recipe-card,
 .person-card,
+.blog-card,
 .contact-card {
     display: grid;
     overflow: hidden;
+}
+
+.blog-card {
+    min-width: 0;
+    background: linear-gradient(180deg, rgba(255, 253, 250, 0.94), rgba(255, 250, 243, 0.92));
+    border: 1px solid rgba(24, 37, 30, 0.08);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.blog-card__media {
+    overflow: hidden;
+    min-height: 240px;
+}
+
+.blog-card__media img {
+    aspect-ratio: 4 / 3;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-card__body {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.35rem;
+}
+
+.blog-card--featured {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+}
+
+.blog-card--featured .blog-card__media {
+    min-height: 100%;
+}
+
+.post-body__section {
+    display: grid;
+    gap: 1rem;
 }
 
 .recipe-card__actions {
@@ -1173,6 +1213,10 @@ main {
     .account-card__hero {
         grid-template-columns: 1fr;
         justify-items: start;
+    }
+
+    .blog-card--featured {
+        grid-template-columns: 1fr;
     }
 }
 
