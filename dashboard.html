@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="View your submitted recipes and activity on Forks & Freedom.">
+    <title>Forks & Freedom | My Recipes</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell" data-dashboard-page>
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">My Recipes</span>
+                <h1>Track your own recipe contributions.</h1>
+                <p>The dashboard surfaces saved activity and community-style submissions in a single, recruiter-friendly workflow.</p>
+                <div class="button-row">
+                    <a class="button" href="submit.html">Submit Another Recipe</a>
+                </div>
+            </article>
+        </section>
+        <section class="section">
+            <div>
+                <span class="pill">Overview</span>
+                <h2 class="section-title">Recipe activity</h2>
+            </div>
+            <div class="stats-grid" data-dashboard-metrics></div>
+        </section>
+        <section class="section">
+            <div>
+                <span class="pill">Submitted Recipes</span>
+                <h2 class="section-title">Your recipe list</h2>
+            </div>
+            <div class="recipe-grid" data-dashboard-recipes></div>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Submit a recipe to Forks & Freedom.">
+    <title>Forks & Freedom | Submit Recipe</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
+    <script src="javascript/recipe-data.js" defer></script>
+    <script src="javascript/recipes-app.js" defer></script>
+</head>
+<body>
+    <header data-site-header></header>
+    <main class="page-shell" data-submit-page>
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Submit Recipe</span>
+                <h1>Add a new recipe to the collection.</h1>
+                <p>This lightweight submission flow stores recipes locally and makes them available throughout the app.</p>
+            </article>
+        </section>
+        <section class="section">
+            <article class="panel">
+                <form class="form-grid" data-submit-form>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="submit-title">Recipe title</label>
+                            <input id="submit-title" name="title" type="text" placeholder="Brown Butter Mushroom Pasta">
+                        </div>
+                        <div class="input-group">
+                            <label for="submit-category">Category</label>
+                            <input id="submit-category" name="category" type="text" placeholder="Pasta">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="submit-cuisine">Cuisine</label>
+                            <input id="submit-cuisine" name="cuisine" type="text" placeholder="Italian-Inspired">
+                        </div>
+                        <div class="input-group">
+                            <label for="submit-difficulty">Difficulty</label>
+                            <select id="submit-difficulty" name="difficulty">
+                                <option value="">Choose one</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="submit-description">Short description</label>
+                        <textarea id="submit-description" name="description" placeholder="What makes this recipe useful, craveable, or worth saving?"></textarea>
+                    </div>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="submit-prep">Prep minutes</label>
+                            <input id="submit-prep" name="prepMinutes" type="number" min="1" placeholder="15">
+                        </div>
+                        <div class="input-group">
+                            <label for="submit-cook">Cook minutes</label>
+                            <input id="submit-cook" name="cookMinutes" type="number" min="1" placeholder="25">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="input-group">
+                            <label for="submit-servings">Servings</label>
+                            <input id="submit-servings" name="servings" type="number" min="1" placeholder="4">
+                        </div>
+                        <div class="input-group">
+                            <label for="submit-tags">Dietary tags</label>
+                            <input id="submit-tags" name="dietaryTags" type="text" placeholder="Vegetarian, High-Protein">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="submit-ingredients">Ingredients</label>
+                        <textarea id="submit-ingredients" name="ingredients" placeholder="One ingredient per line"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="submit-instructions">Instructions</label>
+                        <textarea id="submit-instructions" name="instructions" placeholder="One step per line"></textarea>
+                    </div>
+                    <button class="button" type="submit">Submit Recipe</button>
+                    <p class="status-banner" data-submit-feedback hidden></p>
+                </form>
+            </article>
+        </section>
+    </main>
+    <footer data-site-footer></footer>
+</body>
+</html>
