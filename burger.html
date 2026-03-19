@@ -1,89 +1,66 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <link href="styles/indexstyles.css" rel="stylesheet">
-    <link href="styles/header.css" rel="stylesheet">
-    <link href="styles/burgerstyles.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="American cheeseburger recipe from Forks & Freedom.">
+    <title>Forks & Freedom | American Cheeseburger</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-        </div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html" >Home</a></li>
-                    <li class="m-item"><a href="recipes.html" >Recipes</a></li>
-                    <li class="m-item"><a href="about.html" >About</a></li>
-                    <li class="m-item"><a href="contact.html" >Contact</a></li>  
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="recipe-picture">
-            <img src="Photos/burger.jpg" alt="Image of a cheeseburger with lettuce, tomato, onion, and melted cheese on a toasted bun.">
-        </div>
-    
-        <div class="recipe-text">
-            <br>
-            __________________________________________________
-            <br>
-            <h1 class="recipe-name">
-                American Cheeseburger
-            </h1>
-            <br>
-            <p>4 servings</p>
-            <br>
-            __________________________________________________
-            <br>
-            <h3>
-                Ingredients 
-            </h3>
-            <p>
-                <ul>
-                    <li>2 pounds 80/20 ground beef</li>
-                    <li>Salt and pepper or burger seasoning blend</li>
-                    <li>4 slices of cheese (optional)</li>
-                    <li>4 hamburger buns</li>
-                    <li>Lettuce, tomato, and onion (optional toppings)</li>
-                    <li>Condiments (ketchup, mustard, mayonnaise, etc.)</li>
-                </ul>
-            </p>
-            <h3>
-                Directions
-            </h3>
-            <p>
+    <header data-site-header></header>
+
+    <main class="page-shell">
+        <section class="detail-layout">
+            <article class="detail-card detail-image">
+                <img src="Photos/burger.jpg" alt="American cheeseburger with lettuce and tomato.">
+            </article>
+
+            <aside class="detail-sidebar">
+                <article class="detail-card detail-hero">
+                    <span class="eyebrow">Comfort Food</span>
+                    <h1>American Cheeseburger</h1>
+                    <p class="detail-lead">A classic backyard-style burger built around simple seasoning and a reliable sear.</p>
+                    <div class="meta-row">
+                        <span class="tag">4 servings</span>
+                        <span class="tag">30 minutes</span>
+                        <span class="tag">Beginner</span>
+                    </div>
+                </article>
+
+                <article class="detail-card">
+                    <h2>Ingredients</h2>
+                    <ul class="checklist">
+                        <li>2 pounds 80/20 ground beef</li>
+                        <li>Salt, pepper, or burger seasoning blend</li>
+                        <li>4 slices cheese</li>
+                        <li>4 hamburger buns</li>
+                        <li>Lettuce, tomato, and onion</li>
+                        <li>Condiments of choice</li>
+                    </ul>
+                </article>
+            </aside>
+        </section>
+
+        <section class="section">
+            <article class="detail-card">
+                <h2>Directions</h2>
                 <ol>
-                    <li>Preheat the grill to medium-high and clean the grates if needed.</li>
-                    <li>Divide 2 pounds of 80/20 ground beef into four equal portions.</li>
-                    <li>Shape patties about ½ to ¾ inch thick and make a slight indentation in the center.</li>
-                    <li>Season each side with burger seasoning blend or salt and pepper.</li>
-                    <li>Grill patties for 3-5 minutes per side, depending on desired doneness.</li>
-                    <li>Add cheese slices during the last minute of cooking, if desired.</li>
-                    <li>Toast buns on the grill, if preferred.</li>
-                    <li>Assemble burgers with lettuce, tomato, onion, condiments, and the cooked patty.</li>
-                    <li>Serve and enjoy with your favorite sides!</li>
+                    <li>Preheat a grill or grill pan to medium-high heat.</li>
+                    <li>Divide the beef into four equal portions and shape into patties.</li>
+                    <li>Create a small indentation in the center of each patty to help it cook evenly.</li>
+                    <li>Season both sides with burger seasoning or salt and pepper.</li>
+                    <li>Cook for 3 to 5 minutes per side, depending on thickness and preferred doneness.</li>
+                    <li>Add cheese during the last minute so it melts over the patties.</li>
+                    <li>Toast the buns if you want more texture and structure.</li>
+                    <li>Build the burgers with condiments, vegetables, and the hot patties.</li>
+                    <li>Serve immediately with your preferred side.</li>
                 </ol>
-            </p>
-        </div>
-    </main>    
+            </article>
+        </section>
+    </main>
 
-<footer>
-    <p>&copy; Forks&Freedom</p>
-</footer>
-
-<script src="javascript/fastclick.js"></script>
-<script src="javascript/scroll.js"></script>
-<script src="javascript/fixed-responsive-nav.js"></script>
-<script src="javascript/responsive-nav.js"></script>
-
+    <footer data-site-footer></footer>
 </body>
 </html>

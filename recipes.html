@@ -1,64 +1,85 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Forks&Freedom.com</title>
-    <link href="styles/recipesstyles.css" rel="stylesheet">
-    <script src="javascript/responsive-nav.js"></script>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&family=Hepta+Slab:wght@1..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse recipe ideas from Forks & Freedom, including comfort food, desserts, and weeknight dinners.">
+    <title>Forks & Freedom | Recipes</title>
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="javascript/site.js" defer></script>
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="logo"></div>
-        <div class="head-right">
-            <nav class="nav-collapse">
-                <ul>
-                    <li class="m-item"><a href="index.html">Home</a></li>
-                    <li class="m-item"><a href="recipes.html">Recipes</a></li>
-                    <li class="m-item"><a href="about.html">About</a></li>
-                    <li class="m-item"><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <header data-site-header></header>
 
-    <div class="main_section">
-        <div class="top_section">
-            <h3>Our Recipes</h3>
-        </div>
+    <main class="page-shell">
+        <section class="page-hero">
+            <article class="hero-copy">
+                <span class="eyebrow">Recipe Collection</span>
+                <h1>Browse a sharper, more polished home-cooking library.</h1>
+                <p>
+                    This page is the foundation for richer discovery in the next phase: stronger cards, clearer metadata,
+                    and a structure that can scale beyond a handful of recipes without falling apart visually.
+                </p>
+            </article>
+        </section>
 
-        <div class="section">
-            <a href="TS1.html">
-                <img src="Photos/Steak_Hasselback.webp" alt="A Clickable Image of a steak hasselback dinner." class="recipe_img">
-            </a>
-    
-            <a href="burger.html">
-                <img src="Photos/burger.jpg" alt="A clickable photo of a cheeseburger." class="recipe_img">
-            </a>
-    
-            <a href="applecrisp.html">
-                <img src="Photos/Apple-Crisp-197.jpg" alt="A clickable photo of an Apple Crisp Dessert made of apples, cinnamon, oats, and brown sugar served with ice cream." class="recipe_img">
-            </a>
-            <a href="JG1.html">
-                <img src="Photos/cheestesteak.jpg" alt="A clickable photo of a philly cheesesteak." class="recipe_img">
-            </a>
-        </div>
-    </div>    
+        <section class="section">
+            <div>
+                <span class="pill">Curated Selection</span>
+                <h2 class="section-title">Current featured recipes</h2>
+                <p class="section-subtitle">
+                    Each card now shares the same visual treatment, spacing, and scan pattern so the entire collection feels cohesive.
+                </p>
+            </div>
+            <div class="recipe-grid">
+                <a class="recipe-card" href="TS1.html">
+                    <img src="Photos/Steak_Hasselback.webp" alt="Steak with hasselback potatoes.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Dinner</span>
+                            <span class="tag">Beginner+</span>
+                        </div>
+                        <h3>Steak and Hasselback Potatoes</h3>
+                        <p>Elegant comfort food with crisp potatoes and a steakhouse-style plating payoff.</p>
+                    </div>
+                </a>
+                <a class="recipe-card" href="burger.html">
+                    <img src="Photos/burger.jpg" alt="Classic cheeseburger.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Comfort</span>
+                            <span class="tag">30 min</span>
+                        </div>
+                        <h3>American Cheeseburger</h3>
+                        <p>Juicy patties, toasted buns, and a flexible topping setup that suits weeknights or weekends.</p>
+                    </div>
+                </a>
+                <a class="recipe-card" href="applecrisp.html">
+                    <img src="Photos/Apple-Crisp-197.jpg" alt="Apple crisp dessert.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Dessert</span>
+                            <span class="tag">Family Style</span>
+                        </div>
+                        <h3>Apple Crisp</h3>
+                        <p>A warm, nostalgic dessert with a crisp topping and vanilla-ice-cream potential built in.</p>
+                    </div>
+                </a>
+                <a class="recipe-card" href="JG1.html">
+                    <img src="Photos/cheestesteak.jpg" alt="Philly cheesesteak sandwich.">
+                    <div class="recipe-card__body">
+                        <div class="recipe-card__meta">
+                            <span class="tag">Game Day</span>
+                            <span class="tag">Skillet</span>
+                        </div>
+                        <h3>Philly Cheesesteak</h3>
+                        <p>Thin-sliced steak, peppers, onions, and melted cheese packed into a broiled roll.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
 
-    <footer>
-        <p>&copy; Forks&Freedom</p>
-    </footer>
-
-    <script src="javascript/fastclick.js"></script>
-    <script src="javascript/scroll.js"></script>
-    <script src="javascript/fixed-responsive-nav.js"></script>
-    <script src="javascript/responsive-nav.js"></script>
+    <footer data-site-footer></footer>
 </body>
-
 </html>
