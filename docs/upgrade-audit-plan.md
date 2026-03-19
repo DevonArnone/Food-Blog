@@ -125,3 +125,31 @@
 - Gate save/comment actions behind auth and use per-user local persistence where no backend exists.
 - Add a comment section to the active detail route, keyed by recipe slug instead of pathname.
 - Add blog landing and blog post pages so the product reads as a real food blog rather than only a recipe browser.
+
+## 2026-03-18 Implementation Plan
+
+### Phase 2: Recipe Detail And Shared Layout
+- Tighten the recipe detail grid so the image, editorial content, sidebar cards, and nutrition sections use available horizontal space more intelligently on desktop.
+- Add defensive wrapping rules for headings, stat values, tags, buttons, and list content to prevent overflow on narrow cards.
+- Refine shared card, button, and spacing tokens in `styles/site.css` so recipe detail fixes also improve other pages with the same UI primitives.
+- Expand the active recipe detail route with a cleaner editorial structure that leaves room for save and comment interactions.
+
+### Phase 3: Auth Restoration
+- Replace the detached modal-only auth experience with a site-integrated auth layer and dedicated login, signup, and account pages.
+- Keep the existing localStorage-based architecture for traditional auth, but move to a clearer session model, per-user saved recipes, and stronger UI states.
+- Restore Google entry points using a real configuration path: only activate the Google sign-in flow when a client ID is provided, and degrade gracefully when it is not.
+
+### Phase 4: Save And Comment Experience
+- Make save/favorite actions require authentication and store them per user rather than globally.
+- Wire comments into the active `recipe.html` route, keyed by recipe slug so each recipe has its own thread.
+- Add empty, loading, and unauthenticated states that match the new design system instead of using browser alerts.
+
+### Phase 5: Blog Experience
+- Add a structured blog data source plus a blog landing page and individual blog post template.
+- Extend the homepage and navigation so editorial content is visible throughout the app, not isolated from recipes.
+- Reuse the same card, metadata, and section patterns so the blog feels native to the product.
+
+### Phase 6 And Beyond: Account, Cleanup, And Docs
+- Add a saved recipes page refresh, account page, auth-aware navigation, and protected user flows for recipe submission and commenting.
+- Remove or consolidate legacy styling and scripts that are no longer part of the active experience.
+- Update the README with the new auth, blog, save, and comment flows, plus any required Google environment setup.
